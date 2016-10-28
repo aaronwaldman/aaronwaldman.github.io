@@ -8,9 +8,10 @@ var max_shows_to_display = 10;
 
 
 var loadAjax = function() {
+    var jsonMimeType = "application/json;charset=UTF-8";
     $.ajax({
         method: 'GET',
-        url: 'https://dl.dropboxusercontent.com/u/102907239/Eden_Refugee/events.json',
+        url: 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json',
         dataType: 'json'
     })
     .then(function(data) {
@@ -19,7 +20,8 @@ var loadAjax = function() {
             Shows.updateData(data.data);
         }
         else throw new Error('Ajax load failed: ', data);
-    });
+    })
+    .fail(function(data) { console.log('AHHHH', data);})
 };
 
 var Time = (function(){
@@ -27,8 +29,6 @@ var Time = (function(){
         getHumanTime: function(date) {
             var rawHour = date.getHours();
             var isPm = rawHour > 11;
-
-            console.log(isPm, rawHour)
 
             var hour = rawHour === 0 ? 12 : isPm && rawHour !== 12 ? rawHour - 12 : rawHour;
             var minutes = (date.getMinutes() + '0').slice(-2);
@@ -54,11 +54,9 @@ var Template = (function(){
         replaceTemplateStrings: function(element, data) {
             var template = typeof element === 'string' ? element : $(element).html();
             var search = /\{\{.+?\}\}/g;
-            console.log(data);
 
             return template.replace(search, function(str) {
                 var unwrapped = str.slice(2, -2);
-                console.log('string:', str, 'unwrapped:', unwrapped, 'data match:', data[unwrapped]);
 
                 return data.hasOwnProperty(unwrapped) ? data[unwrapped] : unwrapped;
             });
@@ -170,12 +168,21 @@ var Shows = (function($, Time) {
                 && true;
         },
 
+        getShowListHeight: function() {
+            var showItems = $('#shows-components').children();
+            var height = 0;
+            if (showItems && showItems.length) {
+                showItems.each(function(i, item) { 
+                    height = height + $(item).height();
+                });
+            }
+            return height;
+        },
+
         render: function(shows) {
             var template = $('#showTemplate');
             var descriptionMaxHeight = 36;
             var limit = Math.min(shows.length, window.max_shows_to_display);
-
-            console.log(shows)
 
             for (var i = 0; i < limit; i++) {
                 // Check if show already happened
@@ -194,6 +201,12 @@ var Shows = (function($, Time) {
                 var element = $(formattedTemplate);
 
                 $('#shows-components').append(element);
+
+                var totalHeight = this.getShowListHeight();
+                var containerHeight = $('#shows-components').height();
+                if (totalHeight < containerHeight) {
+                    $('#shows-components').addClass('no-scroll');
+                }
 
                 if (element.find('.eventDescription').innerHeight() > descriptionMaxHeight) {
                     element.addClass('collapsed-description');
@@ -219,7 +232,7 @@ var Shows = (function($, Time) {
         },
 
         attachPageLoadEvents: function() {
-            $('body').on('click', '.description-more, .eventDescription', function(event) { console.log('hey');
+            $('body').on('click', '.description-more, .eventDescription', function(event) {
                 $(event.currentTarget).parents('.showItem').removeClass('collapsed-description');
             });
         }

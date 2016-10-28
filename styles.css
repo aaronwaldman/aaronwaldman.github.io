@@ -245,6 +245,10 @@ html body .hide {
     border-radius: 2px;
 }
 
+.show-list.no-scroll {
+    box-shadow: none;
+}
+
 .showItem {
     margin: 10px 0;
     padding: 3%;
