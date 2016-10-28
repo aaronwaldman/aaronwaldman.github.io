@@ -1,0 +1,129 @@
+<!-- TODO:
+            - Responsive styles
+            - SEO
+            - Loader for event feed
+            - A design
+-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Aaron Waldman Himself</title> 
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div class="logo hide">
+            <!-- <img src="images/logo.jpg" class="logo"> -->
+            <!-- <img src="images/12072623_450498608485877_4675615236712997717_n_small.jpg" class="logo"> -->
+        </div>
+        <h1>
+            Aaron Waldman
+        </h1>
+    </header>
+
+    <section class="carousel desktop-left">
+        <div class="slideshow" id="slideshow">
+            <img src="images/slideshow_feet.jpg" alt="fill in">
+            <img src="images/slideshow_porterbellys.jpg" alt="fill in">
+            <img src="images/slideshow_conv.jpg" alt="fill in">
+            <img src="images/slideshow_guitardrums.jpg" alt="fill in">
+        </div>
+        <div class="carousel-buttons">
+        </div>
+    </section>
+
+    <aside class="sidebar desktop-right">
+        <section class="about">
+            <h2 class="about-header">
+                About
+            </h2>
+            <p>Text goes here</p>
+        </section>
+        <section class="music">
+            <h2 class="music-header">
+                Music
+            </h2>
+            <iframe class="bandcamp-player" src="https://bandcamp.com/EmbeddedPlayer/album=910853358/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://edenrefugee.bandcamp.com/album/eden-refugee">Eden Refugee by Eden Refugee</a></iframe>
+            <!-- <iframe class="bandcamp-player" src="https://bandcamp.com/EmbeddedPlayer/album=910853358/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://edenrefugee.bandcamp.com/album/eden-refugee">Eden Refugee by Eden Refugee</a></iframe> -->
+        </section>
+        <section class="video">
+            <h2>
+                Video
+            </h2>
+            <div class="youtube-player-container">
+                <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/W35bqkJe_tk?list=PLQTEnUycO6izv_3oOVnul-7L_ZTK3drj_" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+    </aside>
+
+    <section class="shows desktop-left">
+        <h2>Upcoming Shows</h2> 
+        <ul id="shows-components" class="show-list">
+            
+        </ul>
+
+        <!-- Start show item template -->
+        <ul id="showTemplate" class="template">
+            <li class="showItem {{pastShowFlag}}">
+                <div class="row-headline">
+                    <div class='date'>
+                        <div class='month'>{{month}}</div>
+                        <div class='day-container'>
+                            <div class="day">{{day}}</div>
+                        </div>
+                    </div>
+                    <div class="title-column">
+                        <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
+                        <p class="eventDescription">{{description}}</p>
+                        <a class="description-more" href="javascript:void(0)">Show More</a>
+                    </div>
+                </div>
+                <div class="row-footer">
+                    <span class='venue'>
+                        <span class="time">{{timeRange}}</span>
+                        <a href="{{placeLink}}">{{placeName}}</a>
+                        <a href="{{mapLink}}" class="{{mapLinkClass}}">Map</a>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <!-- End show item template -->
+
+    </section>
+
+    <footer>
+        <div class="contact-links">
+            <ul class="contact-items">
+                <li class="contact" data-type="email">
+                    <a href="mailto:aaronwaldman@gmail.com">
+                        aaronwaldman@gmail.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="social-links">
+            <li><a class="social-icon facebook gray" title="Facebook" href="https://www.facebook.com/aaronwaldmanmusic"></a></li>
+            <li><a class="social-icon youtube gray" title="Youtube" href="https://www.youtube.com/channel/UCIpQdjoBcknQzpJsTN9COtQ/playlists"></a></li>
+            <li><a class="social-icon bandcamp" title="Bandcamp" href="https://aaronwaldman.bandcamp.com/releases"></a></li>
+        </ul>
+    </footer>
+</div>
+</body>
+
+<script>
+
+</script>
+
+</html>
