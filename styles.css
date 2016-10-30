@@ -123,12 +123,6 @@ body {
     font-family: helvetica, arial;
 }
 
-header {
-    padding: 5px 11% 15px;
-    margin: 0 -10%;
-    height: 50px;
-}
-
 h1, h2, h3, h4, h5 {
     font-family: walkway, helvetica, arial;
     font-weight: 400;
@@ -216,21 +210,56 @@ section {
     margin-bottom: 35px;
 }
 
+aside section {
+    padding: 0;
+}
+
 iframe {
     border: 0; 
+}
+
+footer {
+    clear: both;
+    border-top: 1px solid #333;
+    background: #fff;
+    overflow: hidden;
 }
 
 :focus {
     outline: 0;
 }
 
+
+/* -------------------------------- PAGE LAYOUT -----------------------------*/
+
+header,
+main,
+footer {
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.header-container,
+.container,
+.footer-container {
+    margin: auto;
+}
+
+@media screen and (min-width: 1216px) {
+
+    .header-container,
+    .container,
+    .footer-container {
+        max-width: 1196px;
+    }
+}
+
 /* ------------------------------- GENERAL CLASSES ------------------------- */
 
 .container {
-    max-width:1196px;
-    padding: 0 20px;
     margin: auto;
-    display: block;
+    width: 100%;
 }
 
 .template {
@@ -244,8 +273,17 @@ html body .hide {
 
 /* ------------------------------- HEADER ------------------------- */
 
+
+header {
+    height: 70px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
 @media screen and (max-width: 900px) {
     header {
+        padding: 0 20px;
+        height: 65px;
         border-bottom: 2px solid #000;
     }
 }
@@ -308,17 +346,18 @@ html body .hide {
 
 #booking-info section {
     margin-bottom: 0;
+    padding: 0;
     border-bottom: 2px solid transparent;
 }
 
-#booking-info section:hover {
-    border-bottom: 2px solid #055210;
+#booking-info section:nth-of-type(n+2) {
+    border-top: 2px solid #055210;
 }
 
 .clipboard {
     width: 76px;
     float: right;
-    margin-top: 12px;
+    margin-top: 11px;
     vertical-align: middle;
 }
 
@@ -368,20 +407,26 @@ html body .hide {
 
 /* ------------------------------- BODY ------------------------- */
 
-@media screen and (min-width: 900px) {
+.full-content-width {
+    padding: 0;
+}
+
+@media screen and (min-width: 901px) {
+    section {
+        padding: 0;
+    }
+
     section.desktop-left,
     aside.desktop-left {
         float: left;
-        width: 62%;
-        margin: 0 0 0 15px;
+        width: 63%;
     }
     section.desktop-right,
     aside.desktop-right {
-        width: 30%;
+        width: 31%;
         float: right;
         margin-left: -1px;
-        margin-right: 15px;
-        padding: 0 0 2% 1%;
+        padding: 0 0 2% 0;
     }
 }
 
@@ -390,19 +435,14 @@ html body .hide {
     width: 100%;
     margin-bottom: 0;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 901px) {
     .carousel {
         border-top: 2px solid #000;
     }
 }
 
 .slideshow {
-    height: 315px;
     overflow: hidden;
-}
-
-.slick-track {
-    margin-top: -36px;
 }
 
 .slick-dots {
@@ -456,7 +496,6 @@ html body .hide {
     max-height:500px;
     overflow: auto;
     margin-top: 0;
-    padding: 0 10px;
 
     box-shadow: 0px -13px 20px -20px rgba(0,0,0,0.5) inset;
     border-radius: 2px;
@@ -469,9 +508,6 @@ html body .hide {
 @media screen and (max-width: 768px) {
     .shows > h2 {
         padding: 0 10px 5px;
-    }
-    .show-list {
-        padding: 0;
     }
 }
 
@@ -705,7 +741,7 @@ html body .hide {
     border-top: 1px solid black;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 901px) {
     .sidebar section:first-child {
         border-top: 2px solid black;
     }
@@ -735,14 +771,6 @@ html body .hide {
 
 /* ------------------------------- FOOTER ------------------------- */
 
-footer {
-    clear: both;
-    margin: 0 -10%;
-    padding: 0 10%;
-    border-top: 1px solid #333;
-    background: #fff;
-}
-
 footer li {
     display: inline-block;
     margin-right: 8px;
@@ -751,9 +779,12 @@ footer li:last-of-type {
     margin-right: 0;
 }
 
+.foooter-container {
+    overflow: hidden;
+}
+
 .contact-links {
-    display: inline-block;
-    width: 50%;
+    float: left;
 }
 
 .contact a {
@@ -761,8 +792,8 @@ footer li:last-of-type {
 }
 
 .social-links {
-    display: inline-block;
-    width: 49%;
+    float: right;
+    padding-top: 11px;
     margin: 0;
     vertical-align: middle;
 

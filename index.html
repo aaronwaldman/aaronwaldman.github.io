@@ -17,8 +17,8 @@
 </head>
 
 <body>
-<div class="container">
-    <header>
+<header>
+    <div class="header-container">
         <div class="logo hide">
             <!-- <img src="images/logo.jpg" class="logo"> -->
             <!-- <img src="images/12072623_450498608485877_4675615236712997717_n_small.jpg" class="logo"> -->
@@ -50,82 +50,88 @@
                     <button id="email-clipboard" class="clipboard" data-clipboard-text="aaronwaldman@gmail.com">
                         <i class="icon-paste"></i>
                     </button>
-                </div>  
+                </section>  
             </div>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <section class="carousel desktop-left">
-        <div class="slideshow" id="slideshow">
-            <img src="images/slideshow_solo.jpg">
-            <img src="images/slideshow_feet.jpg">
-            <img src="images/slideshow_porterbellys.jpg">
-            <img src="images/slideshow_conv.jpg">
-        </div>
-        <div class="carousel-buttons">
-        </div>
-    </section>
-
-    <aside class="sidebar desktop-right">
-        <section class="about">
-            <h2 class="about-header">
-                About
-            </h2>
-            <p>Text goes here</p>
-        </section>
-        <section class="music">
-            <h2 class="music-header">
-                Music
-            </h2>
-            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep">A Mediocre Folk EP by Aaron Waldman</a></iframe>
-        </section>
-        <section class="video">
-            <h2>
-                Video
-            </h2>
-            <div class="youtube-player-container">
-                <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen>
-                </iframe>
+<main>
+    <div class="container">
+        <section class="carousel desktop-left full-content-width">
+            <div class="slideshow" id="slideshow">
+                <img src="images/slideshow_solo.jpg">
+                <img src="images/slideshow_feet.jpg">
+                <img src="images/slideshow_porterbellys.jpg">
+                <img src="images/slideshow_conv.jpg">
+            </div>
+            <div class="carousel-buttons">
             </div>
         </section>
-    </aside>
 
-    <section class="shows desktop-left">
-        <h2>Upcoming Shows</h2> 
-        <ul id="shows-components" class="show-list">
-            
-        </ul>
+        <aside class="sidebar desktop-right">
+            <section class="about">
+                <h2 class="about-header">
+                    About
+                </h2>
+                <p>Text goes here</p>
+            </section>
+            <section class="music">
+                <h2 class="music-header">
+                    Music
+                </h2>
+                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep">A Mediocre Folk EP by Aaron Waldman</a></iframe>
+            </section>
+            <section class="video">
+                <h2>
+                    Video
+                </h2>
+                <div class="youtube-player-container">
+                    <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+        </aside>
 
-        <!-- Start show item template -->
-        <ul id="showTemplate" class="template">
-            <li class="showItem {{pastShowFlag}}">
-                <div class="row-headline">
-                    <div class='date'>
-                        <div class='month'>{{month}}</div>
-                        <div class='day-container'>
-                            <div class="day">{{day}}</div>
+        <section class="shows desktop-left">
+            <h2>Upcoming Shows</h2> 
+            <ul id="shows-components" class="show-list">
+                
+            </ul>
+
+            <!-- Start show item template -->
+            <ul id="showTemplate" class="template">
+                <li class="showItem {{pastShowFlag}}">
+                    <div class="row-headline">
+                        <div class='date'>
+                            <div class='month'>{{month}}</div>
+                            <div class='day-container'>
+                                <div class="day">{{day}}</div>
+                            </div>
+                        </div>
+                        <div class="title-column">
+                            <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
+                            <p class="eventDescription">{{description}}</p>
+                            <a class="description-more" href="javascript:void(0)">Show More</a>
                         </div>
                     </div>
-                    <div class="title-column">
-                        <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
-                        <p class="eventDescription">{{description}}</p>
-                        <a class="description-more" href="javascript:void(0)">Show More</a>
+                    <div class="row-footer">
+                        <span class='venue'>
+                            <span class="time">{{timeRange}}</span>
+                            <a href="{{placeLink}}">{{placeName}}</a>
+                            <a href="{{mapLink}}" class="{{mapLinkClass}}">Map</a>
+                        </span>
                     </div>
-                </div>
-                <div class="row-footer">
-                    <span class='venue'>
-                        <span class="time">{{timeRange}}</span>
-                        <a href="{{placeLink}}">{{placeName}}</a>
-                        <a href="{{mapLink}}" class="{{mapLinkClass}}">Map</a>
-                    </span>
-                </div>
-            </li>
-        </ul>
-        <!-- End show item template -->
+                </li>
+            </ul>
+            <!-- End show item template -->
 
-    </section>
+        </section>
+    </div>
+</main>
 
-    <footer>
+<footer>
+    <div class="footer-container">
         <div class="contact-links">
             <ul class="contact-items">
                 <li class="contact" data-type="email">
@@ -141,8 +147,9 @@
             <li><a class="social-icon youtube gray" title="Youtube" href="https://www.youtube.com/channel/UCIpQdjoBcknQzpJsTN9COtQ/playlists"></a></li>
             <li><a class="social-icon bandcamp" title="Bandcamp" href="https://aaronwaldman.bandcamp.com/releases"></a></li>
         </ul>
-    </footer>
-</div>
+    </div>
+</footer>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

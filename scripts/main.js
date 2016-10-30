@@ -97,6 +97,7 @@ var Carousel = (function($, Time) {
                 dots: true,
                 autoplay: true,
                 autoplaySpeed: 60000,
+                adaptiveHeight: true,
                 speed: 500,
                 appendDots: '.carousel-buttons'
             });
