@@ -6,9 +6,7 @@ var max_shows_to_display = 10;
 
 // ------------ BASIC SETTINGS -----------------
 
-
 var loadAjax = function() {
-    var jsonMimeType = "application/json;charset=UTF-8";
     $.ajax({
         method: 'GET',
         url: 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json',
@@ -80,6 +78,72 @@ var Carousel = (function($, Time) {
         }
     };
 })($, Time);
+
+var UIEvents = (function($, Clipboard) {
+    return {
+        bookingLink: null,
+
+        bookingForm: null,
+
+        phoneClipboardButton: null,
+        emailClipboardButton: null,
+        allClipboardButtons: null,
+
+        init: function() {
+            this.bookingLink = $("#booking-trigger");
+            this.bookingForm = $("#booking-info");
+            this.phoneClipboardButton = $("#phone-clipboard");
+            this.emailClipboardButton = $("#email-clipboard");
+            this.allClipboardButtons = this.phoneClipboardButton.add(this.emailClipboardButton);
+            this.phoneToCopy = this.bookingForm.find('.to-copy');
+
+            this.attachEvents();
+        },
+
+        attachEvents: function() {
+            var self = this;
+            this.bookingLink.one('click', function(event) {
+                self.handleBookingLinkClick(event);
+            });
+
+            new Clipboard(this.emailClipboardButton[0]);
+            new Clipboard(this.phoneClipboardButton[0]);
+            this.allClipboardButtons.click(function(event) {
+                self.allClipboardButtons.removeClass("selected");
+                $(event.currentTarget).addClass("selected");
+            });
+        },
+
+        handleBookingLinkClick(event) {
+            var self = this;
+            this.bookingForm.removeClass("hide");
+            event.stopPropagation();
+
+            $('body').one("click", function(newEvent) {
+                self.handleClickWhileBookingActive(newEvent);
+            });
+        },
+
+        handleClickWhileBookingActive(event) {
+            var self = this;
+            var isTargetBookingForm = $(event.target).closest("#booking-info").length;
+            event.stopPropagation();
+            if (!isTargetBookingForm) {
+                this.bookingForm.addClass("hide");
+                this.allClipboardButtons.removeClass("selected");
+
+                this.bookingLink.one('click', function(newEvent) {
+                    self.handleBookingLinkClick(newEvent);
+                });
+            } else {
+                $('body').one("click", function(newEvent) {
+                    self.handleClickWhileBookingActive(newEvent);
+                });
+            }
+        }
+    };
+})($, Clipboard);
+
 
 var Shows = (function($, Time) {
     return {
@@ -240,7 +304,7 @@ var Shows = (function($, Time) {
 })($, Time);
 
 $(document).ready(function(){
-    var components = [Carousel, Shows];
+    var components = [Carousel, Shows, UIEvents];
     for (var i = 0, l = components.length; i < l; i++) {
         if (typeof components[i].init === 'function') {
             components[i].init();

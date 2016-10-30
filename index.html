@@ -14,10 +14,6 @@
 
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-    <script type="text/javascript" src="scripts/main.js"></script>
 </head>
 
 <body>
@@ -30,6 +26,33 @@
         <h1>
             Aaron Waldman
         </h1>
+        <nav class="header-links">
+            <span id="booking-trigger" class="clickable">Booking</span>
+
+            <div id="booking-info" class="hide">
+                <div class="just-the-tip"></div>
+                <section class="phone-section">
+                    <i class="icon-phone"></i>
+                    <a href="tel:2075555555">
+                        <span class="telephone-text to-copy info-line"/>207.555.5555</span>
+                    </a>
+
+                    <button id="phone-clipboard" class="clipboard" data-clipboard-text="12075555555">
+                        <i class="icon-paste"></i>
+                    </button>
+                </section>
+
+                <section class="email-section">
+                    <i class="icon-envelope"></i>
+                    <a href="mailto:aaronwaldman@gmail.com">
+                        <span class="email-text to-copy info-line"/>aaronwaldman@gmail.com</span>
+                    </a>
+                    <button id="email-clipboard" class="clipboard" data-clipboard-text="aaronwaldman@gmail.com">
+                        <i class="icon-paste"></i>
+                    </button>
+                </div>  
+            </div>
+        </nav>
     </header>
 
     <section class="carousel desktop-left">
@@ -61,7 +84,8 @@
                 Video
             </h2>
             <div class="youtube-player-container">
-                <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/W35bqkJe_tk?list=PLQTEnUycO6izv_3oOVnul-7L_ZTK3drj_" frameborder="0" allowfullscreen></iframe>
+                <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen>
+                </iframe>
             </div>
         </section>
     </aside>
@@ -121,8 +145,9 @@
 </div>
 </body>
 
-<script>
-
-</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
 
 </html>
