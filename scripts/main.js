@@ -6,21 +6,46 @@ var max_shows_to_display = 10;
 
 // ------------ BASIC SETTINGS -----------------
 
-var loadAjax = function() {
-    $.ajax({
-        method: 'GET',
-        url: 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json',
-        dataType: 'json'
-    })
-    .then(function(data) {
-        window.test = data;
-        if (data.data) {
-            Shows.updateData(data.data);
+
+// All dependecies objects return a promise, which run the module's init function when resolved (see loadAjax function)
+var Dependencies = (function() {
+    return {
+        Shows: function() {
+            return $.ajax({
+                method: 'GET',
+                url: 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json',
+                dataType: 'json'
+            });
+        },
+
+        UIEvents: function() {
+            var promise = $.Deferred();
+
+            if (!window.Clipboard) {
+                window.Clipboard = null;
+
+                var iterations = 0;
+                var MAX_ITERATIONS = 100;
+                var clipboardInterval = setInterval(function() {
+                    iterations++;
+
+                    if (typeof window.Clipboard === 'function') {
+                        promise.resolve(window.Clipboard);
+                        window.clearInterval(clipboardInterval);
+                    }
+                    if (iterations > MAX_ITERATIONS) {
+                        promise.reject("Timed out while waiting for Clipboard.js library to load");
+                        window.clearInterval(clipboardInterval);
+                    }
+                }, 100);
+
+                return promise.promise();
+            }
+
+            return promise.resolve(window.Clipboard);
         }
-        else throw new Error('Ajax load failed: ', data);
-    })
-    .fail(function(data) { console.log('AHHHH', data);})
-};
+    }
+})();
 
 var Time = (function(){
     return {
@@ -79,8 +104,12 @@ var Carousel = (function($, Time) {
     };
 })($, Time);
 
-var UIEvents = (function($, Clipboard) {
+
+var UIEvents = (function($) {
     return {
+
+        Clipboard: null,
+
         bookingLink: null,
 
         bookingForm: null,
@@ -89,7 +118,9 @@ var UIEvents = (function($, Clipboard) {
         emailClipboardButton: null,
         allClipboardButtons: null,
 
-        init: function() {
+        init: function(Clipboard) {
+            this.Clipboard = Clipboard;
+
             this.bookingLink = $("#booking-trigger");
             this.bookingForm = $("#booking-info");
             this.phoneClipboardButton = $("#phone-clipboard");
@@ -106,8 +137,8 @@ var UIEvents = (function($, Clipboard) {
                 self.handleBookingLinkClick(event);
             });
 
-            new Clipboard(this.emailClipboardButton[0]);
-            new Clipboard(this.phoneClipboardButton[0]);
+            new this.Clipboard(this.emailClipboardButton[0]);
+            new this.Clipboard(this.phoneClipboardButton[0]);
             this.allClipboardButtons.click(function(event) {
                 self.allClipboardButtons.removeClass("selected");
                 $(event.currentTarget).addClass("selected");
@@ -142,21 +173,18 @@ var UIEvents = (function($, Clipboard) {
             }
         }
     };
-})($, Clipboard);
+})($);
 
 
 var Shows = (function($, Time) {
     return {
 
-        showData: [],
+        events: [],
 
-        init: function() {
+        init: function(response) {
+            this.events = response.data;
+            this.render();
             this.attachPageLoadEvents();
-        },
-
-        updateData: function(data){
-            this.events = data;
-            this.render(data);
         },
 
         formatShowData: function(show) {
@@ -183,7 +211,7 @@ var Shows = (function($, Time) {
                 // Remove last set of ',+' chars if any at end of url
                 data.mapLink = data.mapLink.replace(/(,\s$)|(%2C%20$)/, '');
             }
-            else if(this.getHasCoordinates(show)) {
+            else if (this.getHasCoordinates(show)) {
                 data.mapLink = mapLinkRoot
                     + '?q='
                     + encodeURIComponent( location.latitude
@@ -243,7 +271,8 @@ var Shows = (function($, Time) {
             return height;
         },
 
-        render: function(shows) {
+        render: function() {
+            var shows = this.events;
             var template = $('#showTemplate');
             var descriptionMaxHeight = 36;
             var limit = Math.min(shows.length, window.max_shows_to_display);
@@ -304,12 +333,26 @@ var Shows = (function($, Time) {
 })($, Time);
 
 $(document).ready(function(){
-    var components = [Carousel, Shows, UIEvents];
-    for (var i = 0, l = components.length; i < l; i++) {
-        if (typeof components[i].init === 'function') {
-            components[i].init();
+    // Repetitive keys are needed for easy dependency loading
+    var modules = { Carousel: Carousel, Shows: Shows, UIEvents: UIEvents };
+
+    for (var moduleKey in modules) {
+        try {
+            var context = modules[moduleKey];
+            if (typeof window.Dependencies[moduleKey] === 'function') {
+                var loader = window.Dependencies[moduleKey]();
+
+                loader.then(modules[moduleKey].init.bind(context));
+            }
+            else if (context && typeof modules[moduleKey].init === 'function') {
+                modules[moduleKey].init();
+            }
+            else {
+                console.warn("Uhh what happened to " + moduleKey + "?");
+            }
+        }
+        catch(e) {
+            console.error("Error initializing module: " + moduleKey + " - Msg:", e);
         }
     }
-
-    loadAjax();
 });
