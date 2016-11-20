@@ -1,160 +1,154 @@
-<!-- TODO:
-            - Responsive styles
-            - SEO
-            - Loader for event feed
-            - A design
--->
 
-
-<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Aaron Waldman | Modern Folk </title> 
 
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
-
 <body>
-<header>
-    <div class="header-container">
-        <div class="logo hide">
-            <!-- <img src="images/logo.jpg" class="logo"> -->
-            <!-- <img src="images/12072623_450498608485877_4675615236712997717_n_small.jpg" class="logo"> -->
+    <header id="header" class="noBg">
+        <div class="header-container">
+            <a href="#home">
+                <h1>Aaron Waldman</h1>
+            </a>
+            <nav class="header-links">
+                <a href="#shows" class="header-link clickable shows-link">
+                    <i class="icon-calendar"></i>Shows
+                    <div class="header-link-underline"></div>
+                </a>
+                <a href="https://aaronwaldman.bandcamp.com/releases" class="header-link clickable">
+                    <i class="icon-bandcamp"></i>Bandcamp
+                </a>
+                <a href="https://www.facebook.com/aaronwaldmanmusic" class="header-link clickable">
+                    <i class="icon-facebook"></i>Facebook
+                </a>
+                <span id="booking-trigger" class="header-link clickable">
+                    <i class="icon-phone"></i>Booking
+
+                    <div id="booking-info">
+                        <div class="just-the-tip"></div>
+                        <section class="phone-section">
+                            <i class="icon-phone"></i>
+                            <a href="tel:2075555555">
+                                <span class="telephone-text to-copy info-line"/>207.555.5555</span>
+                            </a>
+
+                            <button id="phone-clipboard" class="clipboard" data-clipboard-text="12075555555">
+                                <i class="icon-paste"></i>
+                            </button>
+                        </section>
+
+                        <section class="email-section">
+                            <i class="icon-envelope"></i>
+                            <a href="mailto:aaronwaldman@gmail.com">
+                                <span class="email-text to-copy info-line"/>aaronwaldman@gmail.com</span>
+                            </a>
+                            <button id="email-clipboard" class="clipboard" data-clipboard-text="aaronwaldman@gmail.com">
+                                <i class="icon-paste"></i>
+                            </button>
+                        </section>  
+                    </div>
+                </span>
+            </nav>
+            <div class="clear"></div>
         </div>
-        <h1>
-            Aaron Waldman
-        </h1>
-        <nav class="header-links">
-            <span id="booking-trigger" class="clickable">Booking</span>
+    </header>
+    <main>
+        <div id="home" class="page home-page">
+            <div id="home-container" class="container">
+                <div class="content">
+                    <h2>About</h2>
+                    <p class="about-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus leo at libero sodales, ac blandit ex ullamcorper. In hac habitasse platea dictumst. Donec faucibus id nibh eu sollicitudin.<br><br>
 
-            <div id="booking-info" class="hide">
-                <div class="just-the-tip"></div>
-                <section class="phone-section">
-                    <i class="icon-phone"></i>
-                    <a href="tel:2075555555">
-                        <span class="telephone-text to-copy info-line"/>207.555.5555</span>
-                    </a>
-
-                    <button id="phone-clipboard" class="clipboard" data-clipboard-text="12075555555">
-                        <i class="icon-paste"></i>
-                    </button>
-                </section>
-
-                <section class="email-section">
-                    <i class="icon-envelope"></i>
-                    <a href="mailto:aaronwaldman@gmail.com">
-                        <span class="email-text to-copy info-line"/>aaronwaldman@gmail.com</span>
-                    </a>
-                    <button id="email-clipboard" class="clipboard" data-clipboard-text="aaronwaldman@gmail.com">
-                        <i class="icon-paste"></i>
-                    </button>
-                </section>  
-            </div>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <div class="container">
-        <section class="carousel desktop-left full-content-width">
-            <div class="slideshow" id="slideshow">
-                <img src="images/slideshow_solo.jpg">
-                <img src="images/slideshow_feet.jpg">
-                <img src="images/slideshow_porterbellys.jpg">
-                <img src="images/slideshow_conv.jpg">
-            </div>
-            <div class="carousel-buttons">
-            </div>
-        </section>
-
-        <aside class="sidebar desktop-right">
-            <section class="about">
-                <h2 class="about-header">
-                    About
-                </h2>
-                <p>Text goes here</p>
-            </section>
-            <section class="music">
-                <h2 class="music-header">
-                    Music
-                </h2>
-                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep">A Mediocre Folk EP by Aaron Waldman</a></iframe>
-            </section>
-            <section class="video">
-                <h2>
-                    Video
-                </h2>
-                <div class="youtube-player-container">
-                    <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen>
-                    </iframe>
+                        Aenean id elit vehicula, aliquet lacus sit amet, maximus nisi. Ut velit sem, porta sit amet finibus vitae, sagittis id elit. Nunc eget felis venenatis, ullamcorper eros ac, euismod dui. Suspendisse eget blandit enim. Fusce ac vulputate nulla. Quisque sit amet tincidunt risus.
+                    </p>
                 </div>
-            </section>
-        </aside>
-
-        <section class="shows desktop-left">
-            <h2>Upcoming Shows</h2> 
-            <ul id="shows-components" class="show-list">
-                
-            </ul>
-
-            <!-- Start show item template -->
-            <ul id="showTemplate" class="template">
-                <li class="showItem {{pastShowFlag}}">
-                    <div class="row-headline">
-                        <div class='date'>
-                            <div class='month'>{{month}}</div>
-                            <div class='day-container'>
-                                <div class="day">{{day}}</div>
-                            </div>
-                        </div>
-                        <div class="title-column">
-                            <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
-                            <p class="eventDescription">{{description}}</p>
-                            <a class="description-more" href="javascript:void(0)">Show More</a>
-                        </div>
+                <section class="video-section">
+                    <h2 class="video-header">Video</h2>
+                    <div class="youtube-player-container">
+                        <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen=""></iframe>
                     </div>
-                    <div class="row-footer">
-                        <span class='venue'>
-                            <span class="time">{{timeRange}}</span>
-                            <a href="{{placeLink}}">{{placeName}}</a>
-                            <a href="{{mapLink}}" class="{{mapLinkClass}}">Map</a>
-                        </span>
-                    </div>
-                </li>
-            </ul>
-            <!-- End show item template -->
-
-        </section>
-    </div>
-</main>
-
-<footer>
-    <div class="footer-container">
-        <div class="contact-links">
-            <ul class="contact-items">
-                <li class="contact" data-type="email">
-                    <a href="mailto:aaronwaldman@gmail.com">
-                        aaronwaldman@gmail.com
-                    </a>
-                </li>
-            </ul>
+                </section>
+                <section class="music-player">
+                    <h2 class="music-header">Music</h2>
+                    <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless="">
+                        &amp;lt;a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep"&amp;gt;A Mediocre Folk EP by Aaron Waldman&amp;lt;/a&amp;gt;
+                    </iframe>
+                </section>
+            </div>
+            <div class="home-background"></div>
         </div>
 
-        <ul class="social-links">
-            <li><a class="social-icon facebook gray" title="Facebook" href="https://www.facebook.com/aaronwaldmanmusic"></a></li>
-            <li><a class="social-icon youtube gray" title="Youtube" href="https://www.youtube.com/channel/UCIpQdjoBcknQzpJsTN9COtQ/playlists"></a></li>
-            <li><a class="social-icon bandcamp" title="Bandcamp" href="https://aaronwaldman.bandcamp.com/releases"></a></li>
-        </ul>
-    </div>
-</footer>
+        <div class="page-border">
+
+        </div>
+
+        <div id="shows" class="page shows-page">
+            <div class="container">
+                <section class="shows">
+                    <h2 class="shows-header">Upcoming Shows</h2>
+
+                    <ul id="shows-components" class="show-list no-scroll">
+
+                    </ul>
+
+                    <!-- Start show item template -->
+                    <ul id="showTemplate" class="template">
+                        <li class="showItem {{pastShowFlag}}">
+                            <div class="row-headline">
+                                <div class="date">
+                                    <div class="month">{{month}}</div>
+                                    <div class="day-container">
+                                        <div class="day">{{day}}</div>
+                                    </div>
+                                </div>
+                                <div class="title-column">
+                                    <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
+                                    <p class="eventDescription">{{description}}</p>
+                                    <a class="description-more" href="javascript:void(0)">Show More</a>
+                                </div>
+                            </div>
+                            <div class="row-footer">
+                                <span class="venue">
+                                    <span class="time">{{timeRange}}</span>
+                                    <a href="{{placeLink}}">{{placeName}}</a>
+                                    <a href="{{mapLink}}" class="{{mapLinkClass}}">Map</a>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- End show item template -->
+
+                    <div id="#no-shows" class="hide">
+                        No upcoming shows found :(
+                    </div>
+
+                </section>
+            </div>
+            <div class="shows-background"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-links">
+                <ul class="contact-items">
+                    <li class="contact" data-type="email">
+                        <a href="mailto:aaronwaldman@gmail.com">
+                            aaronwaldman@gmail.com
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
 
 </body>
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
-<script type="text/javascript" src="scripts/main.js"></script>
-
 </html>

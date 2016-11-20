@@ -3,6 +3,7 @@
 var show_upcoming_shows_only = false;
 var grey_past_shows = false;
 var max_shows_to_display = 10;
+var collapse_long_show_descriptions = false;
 
 // ------------ BASIC SETTINGS -----------------
 
@@ -18,7 +19,7 @@ var Dependencies = (function() {
             });
         },
 
-        UIEvents: function() {
+        Booking: function() {
             var promise = $.Deferred();
 
             if (!window.Clipboard) {
@@ -87,26 +88,73 @@ var Template = (function(){
     }
 })();
 
-var Carousel = (function($, Time) {
+var Header = (function($, window) {
+
     return {
+
+        element: null,
+
+        window: null,
+
+        height: null,
+
+        activeState: "",
+
+        changeTriggers: [/* {klass: string, yThreshold: 0} */],
+
         init: function() {
-            var carouselElement = $('#slideshow');
-            carouselElement.slick({
-                infinite: true,
-                arrows: false,
-                dots: true,
-                autoplay: true,
-                autoplaySpeed: 60000,
-                adaptiveHeight: true,
-                speed: 500,
-                appendDots: '.carousel-buttons'
+            this.window = $(window);
+            this.element = $("#header");
+            this.height = this.element.outerHeight();
+
+            this.setTriggerPositions();
+
+            this.window.scroll(this.handleScroll.bind(this));
+            this.handleScroll();
+            this.element.removeClass('noBg');
+        },
+
+        setTriggerPositions: function() {
+            this.changeTriggers = [{
+                "klass": "homeContentOverlap",
+                "yThreshold": $("#home-container").offset().top,
+            }, {
+                "klass": "showsPageOverlap",
+                "yThreshold": $("#shows").offset().top
+            }];
+
+            this.changeTriggers.sort(function(a,b) {
+                return a.yThreshold > b.yThreshold
             });
+        },
+
+        handleScroll: function() {
+            var bottomPos = this.height + this.window.scrollTop();
+            var active = null;
+
+            this.changeTriggers.forEach(function(trigger) {
+                if (bottomPos > trigger.yThreshold) {
+                    active = trigger;
+                }
+            });
+
+            if (!active && this.active) {
+                this.element.removeClass(this.active.klass);
+                this.active = null;
+            }
+            else if (active != this.active) {
+                if (this.active) this.element.removeClass(this.active.klass);
+                this.active = active;
+                this.element.addClass(active.klass);
+            }
         }
+
     };
-})($, Time);
+
+})($, window);
 
 
-var UIEvents = (function($) {
+var Booking = (function($) {
     return {
 
         Clipboard: null,
@@ -126,7 +174,7 @@ var UIEvents = (function($) {
             this.bookingForm = $("#booking-info");
             this.phoneClipboardButton = $("#phone-clipboard");
             this.emailClipboardButton = $("#email-clipboard");
-            this.allClipboardButtons = this.phoneClipboardButton.add(this.emailClipboardButton);
+            this.allClipboardButtons = $(this.phoneClipboardButton).add(this.emailClipboardButton);
             this.phoneToCopy = this.bookingForm.find('.to-copy');
 
             this.attachEvents();
@@ -148,7 +196,7 @@ var UIEvents = (function($) {
 
         handleBookingLinkClick(event) {
             var self = this;
-            this.bookingForm.removeClass("hide");
+            this.bookingLink.addClass("active");
             event.stopPropagation();
 
             $('body').one("click", function(newEvent) {
@@ -161,7 +209,7 @@ var UIEvents = (function($) {
             var isTargetBookingForm = $(event.target).closest("#booking-info").length;
             event.stopPropagation();
             if (!isTargetBookingForm) {
-                this.bookingForm.addClass("hide");
+                this.bookingLink.removeClass("active");
                 this.allClipboardButtons.removeClass("selected");
 
                 this.bookingLink.one('click', function(newEvent) {
@@ -275,7 +323,7 @@ var Shows = (function($, Time) {
         render: function() {
             var shows = this.events;
             var template = $('#showTemplate');
-            var descriptionMaxHeight = 36;
+            var descriptionMaxHeight = collapse_long_show_descriptions ? 36 : 9999;
             var limit = Math.min(shows.length, window.max_shows_to_display);
 
             for (var i = 0; i < limit; i++) {
@@ -308,6 +356,10 @@ var Shows = (function($, Time) {
 
                 this.attachRenderEvents(element, formattedData);
             }
+
+            if (!$("#shows-components").children() || !$("#shows-components").children().length) {
+                $("#no-shows").addClass("show");
+            }
         },
 
         attachRenderEvents: function(element, data) {
@@ -335,7 +387,7 @@ var Shows = (function($, Time) {
 
 $(document).ready(function(){
     // Repetitive keys are needed for easy dependency loading
-    var modules = { Carousel: Carousel, Shows: Shows, UIEvents: UIEvents };
+    var modules = { Header: Header, Shows: Shows, Booking: Booking };
 
     for (var moduleKey in modules) {
         try {
