@@ -115,6 +115,9 @@ clay: #7F3C00;
 .icon-youtube:before {
   content: "\ea9d";
 }
+.icon-menu:before {
+  content: "\e9bd";
+}
 
 
 
@@ -150,22 +153,15 @@ h1 {
     margin: 0;
     padding-bottom:2px;
     padding-left: 12px;
-    width: 312px;
+    width: 294px;
     float: left;
 
     border-bottom: 2px solid black;
     color: #333;
-    font-size: 42px;
+    font-size: 40px;
     line-height: 60px;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
     vertical-align: bottom;
-}
-
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 36px;
-        margin: 0px 0 -4px 0px;
-    }
 }
 
 h2 {
@@ -242,6 +238,21 @@ footer {
     outline: 0;
 }
 
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        margin: 0px 0 -4px 0px;
+    }
+}
+
 
 /* -------------------------------- PAGE LAYOUT -----------------------------*/
 
@@ -262,13 +273,11 @@ footer {
     overflow: hidden;
 }
 
-@media screen and (min-width: 1216px) {
-
-    .header-container,
-    .container,
-    .footer-container {
-        max-width: 1196px;
-    }
+.header-container,
+.container,
+.footer-container {
+    max-width: 1196px;
+    width: 100%;
 }
 
 /* ------------------------------- GENERAL CLASSES ------------------------- */
@@ -287,9 +296,7 @@ footer {
 }
 
 .container {
-    width: 1196px;
     margin: auto;
-    margin-top: 80px;
     overflow: hidden;
     position: relative;
 }
@@ -303,7 +310,6 @@ footer {
     margin: 0;
     padding: 30px;
     float: left;
-    background: rgba(255, 255, 255, 0.7);
 }
 
 .vertical-middle {
@@ -326,6 +332,22 @@ html body .hide {
     clear: both;
 }
 
+@media screen and (max-width: 1196px) {
+    .content {
+        width: calc(100% - 496px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mobile-hide {
+        display: none !important; /* Sorry future self */
+    }
+}
+@media screen and (min-width: 481px) {
+    .mobile-only {
+        display: none !important; /* Sorry future self */
+    }
+}
 
 /* ------------------------------- HEADER ------------------------- */
 
@@ -340,10 +362,10 @@ header {
     border-bottom: 2px solid black;
     z-index: 100;
 
-    -webkit-transition: 0.5s ease all;
-       -moz-transition: 0.5s ease all;
-         -o-transition: 0.5s ease all;
-            transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease background, 0.5s ease width, 0.5s ease border;
+       -moz-transition: 0.5s ease background, 0.5s ease width, 0.5s ease border;
+         -o-transition: 0.5s ease background, 0.5s ease width, 0.5s ease border;
+            transition: 0.5s ease background, 0.5s ease width, 0.5s ease border;
 }
 
 @media screen and (max-width: 900px) {
@@ -370,25 +392,20 @@ header {
 
 .header-links {
     line-height: 50px;
-    width: calc(100% - 360px);
+    width: calc(100% - 306px);
     display: inline-block;
     float: right;
-    margin-top: 10px;
     position: relative;
     box-sizing: border-box;
     text-align: right;
     font-family: walkway, helvetica, arial;
 }
 
-@media screen and (max-width: 480px) {
-    .header-links {
-        display: none;
-    }
-}
-
 .header-link {
     display: inline-block;
-    width: 24%;
+    margin-right: 20px;
+    margin-right: 4%;
+    line-height: 65px;
 
     color: #333;
     font-size: 24px;
@@ -396,10 +413,14 @@ header {
     text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
     text-align: center;
 
-    -webkit-transition: 0.5s ease all;
-       -moz-transition: 0.5s ease all;
-         -o-transition: 0.5s ease all;
-            transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease color;
+       -moz-transition: 0.5s ease color;
+         -o-transition: 0.5s ease color;
+            transition: 0.5s ease color;
+}
+
+.header-link:last-child {
+    margin-right: 0;
 }
 
 .header-link.active,
@@ -417,15 +438,26 @@ header {
 }
 
 .header-link-underline {
-    padding-bottom: 3px;
-    width: 67%;
-    margin: auto;
+    width: 100%;
+    margin-top: -3px;
     border-bottom: 2px solid transparent;
 
     -webkit-transition: 0.5s ease all;
        -moz-transition: 0.5s ease all;
          -o-transition: 0.5s ease all;
             transition: 0.5s ease all;
+}
+
+#header-links-toggle {
+    display: none;
+
+    width: calc(100% - 236px);
+    margin: -3px -10px 0 0;
+    text-align: right;
+    padding: 0 10px 0 15px;
+}
+#header-links-toggle i {
+    margin:0;
 }
 
 #booking-info {
@@ -452,15 +484,6 @@ header {
     display: inline-block;
 }
 
-@media screen and (max-width: 768px) {
-
-    #booking-info {
-        font-size: 16px;
-        width: 320px;
-        right: 0;
-    }
-}
-
 #booking-info i {
     display: inline-block;
     margin-right: 10px;
@@ -478,6 +501,7 @@ header {
 #booking-info section {
     margin-bottom: 0;
     padding: 10px 0;
+    line-height: 60px;
     border-bottom: 2px solid transparent;
 }
 
@@ -515,14 +539,14 @@ header {
 
 .just-the-tip {
     position: absolute;
-    right: 63px;
+    right: 22px;
     bottom: 100%;
     width: 38px;
     height: 24px;
     overflow: visible;
 
     font-size: 38px;
-    color: #fff;
+    color: rgba(255,255,255,0.9);
 }
 .just-the-tip:before {
     content: "\25B2";
@@ -533,6 +557,123 @@ header {
 
     vertical-align: middle;
     z-index: 101;
+}
+
+@media screen and (max-width: 1024px) {
+    h1 {
+        width: 242px;
+        padding-left: 0;
+        font-size: 34px;
+    }
+
+    .header-links {
+        width: calc(100% - 246px);
+    }
+
+    .header-link {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+    .header-link i {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    #booking-info {
+        top: 65px;
+    }
+
+    #booking-info section {
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .clipboard {
+        margin-top: 17px;
+    }
+
+    .just-the-tip {
+        bottom: calc(100% + 10px);
+    }
+}
+
+@media screen and (max-width: 815px) {
+    h1 {
+        width: 214px;
+        font-size: 30px;
+    }
+
+    .header-link {
+        margin-right: 15px;
+        font-size: 16px;
+    }
+
+    .header-links {
+        width: calc(100% - 230px);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    #booking-info {
+        font-size: 16px;
+        width: 320px;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 698px) {
+    .header-link {
+        font-size: 0;
+    }
+    .header-link > i {
+        line-height: 65px;
+        font-size: 24px;
+        vertical-align: middle;
+    }
+
+    .header-link-underline {
+        width: 78%;
+    }
+
+    .just-the-tip {
+        right: 4px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-link {
+        display: none;
+    }
+    .header-link-underline {
+        width: 100%;
+    }
+    .show-mobile-nav .header-link {
+        display: inline-block;
+    }
+    #header.show-mobile-nav {
+        height: 408px;
+    }
+
+    #header-links-toggle,
+    .show-mobile-nav #header-links-toggle {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .show-mobile-nav .header-links,
+    .show-mobile-nav .header-link {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .show-mobile-nav .header-link {
+        font-size: 24px;
+        border-bottom: 2px solid #333;
+    }
+    .show-mobile-nav .header-link:last-child {
+        border-bottom: none;
+    }
 }
 
 /* ---------- Dynamic header classes based on scroll position --- */
@@ -584,6 +725,11 @@ header.showsPageOverlap .just-the-tip {
     color: #eceFe2;
 }
 
+@media screen and (max-width: 480px) {
+    header.showsPageOverlap.show-mobile-nav h1 {
+        border-bottom: 2px solid #333;
+    }
+}
 
 
 /* ------------------------------- BODY ------------------------- */
@@ -605,27 +751,102 @@ header.showsPageOverlap .just-the-tip {
     z-index: -1;
 }
 
+#home-container {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* --------- About ---------- */
+
+.about.content {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 
 /* --------- Video ---------- */
 
 .video-section {
-    width: 376px;
+    max-width: 436px;
+    width: 50%;
+    height: calc(96% - 180px);
+    padding: 30px;
+    margin-bottom: 0;
     float: right;
     position: relative;
-    padding: 30px;
-    padding-bottom: 203px;
-    background: rgba(255, 255, 255, 0.35);
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.youtube-player-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.youtube-player {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 /* ------ Music player ------ */
 
 .music-player {
-    width: 700px;
     float: left;
     height: 200px;
     margin: 0px 0;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.5);
+    background: none;
+}
+
+.bandcamp-player {
+    width: 100%;
+    height: 120px;
+}
+
+
+/* ------ Home responsive -----*/
+
+@media screen and (max-width: 915px) {
+    #home-container {
+        margin-top: 10px;
+    }
+
+    .content {
+        width: calc(50% - 60px);
+        height: 120px;
+    }
+
+    .about {
+        width: calc(100% - 60px);
+        height: auto;
+    }
+
+    .video-section {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 698px) {
+
+    .content, .video-section {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        box-sizing: border-box;
+        float: none;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .youtube-player-container {
+        width: 80%;
+    }
 }
 
 
@@ -633,12 +854,19 @@ header.showsPageOverlap .just-the-tip {
 
 .shows {
     width: 70%;
-    margin: 0 auto 60px auto;
+    margin: 40px auto 60px auto;
     padding: 30px;
 }
 
+@media screen and (max-width: 915px) {
+    .shows {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
 .shows > h2 {
-    padding: 0 20px 5px;
+    padding: 0 20px 25px;
     margin: 0 -10px;
 
     transition: 0.25s box-shadow ease;
@@ -688,15 +916,9 @@ header.showsPageOverlap .just-the-tip {
     box-shadow: none;
 }
 
-@media screen and (max-width: 768px) {
-    .shows > h2 {
-        padding: 0 10px 5px;
-    }
-}
-
 .showItem {
     margin: 10px 0;
-    padding: 3%;
+    padding: 20px;
 
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -733,10 +955,10 @@ header.showsPageOverlap .just-the-tip {
 }
 
 .date {
-    display: inline-block;
+    float: left;
     position: relative;
     width: 8%;
-    margin-right: -5px;    
+    margin-right: 20px; 
     margin-top: 4px;
     padding-bottom: 5.5%;
     vertical-align: top;
@@ -787,17 +1009,9 @@ header.showsPageOverlap .just-the-tip {
     color: #333;
 }
 
-.title-column {
+.show-text {
     display: inline-block;
-    margin: 0 0 0 3%;
-    max-width: 86%;
-    width: calc(100% - 80px);
-}
-@media screen and (max-width: 480px) {
-    .title-column {
-        margin: 0 0 0 5%;
-        max-width: 75%;
-    }
+    width: calc(100% - 90px);
 }
 .show-title, .show-title a {
     margin: 0;
@@ -805,24 +1019,17 @@ header.showsPageOverlap .just-the-tip {
     color: #222;
     font-size: 24px;
 }
-@media screen and (max-width: 480px) {
-    .show-title {
-        font-size: 18px;
-    }
-}
 
 .eventDescription {
     margin: 0.5em 0;
     overflow: hidden;
     position: relative;
+    line-height: 1.2
 
     font-size: 15px;
     color: #000;
 }
 @media screen and (max-width: 480px) {
-    .eventDescription {
-        font-size: 14px;
-    }
 }
 
 
@@ -833,7 +1040,7 @@ header.showsPageOverlap .just-the-tip {
 
 .row-footer{
     margin: 0.5em 0 0;
-    padding-left: 11.11%;
+    padding-left: 72px;
     color: #fff;
 }
 
@@ -853,19 +1060,60 @@ header.showsPageOverlap .just-the-tip {
     cursor: default;
 }
 
-@media screen and (max-width: 720px) {
-    .row-footer {
-        padding-left: 73px;
-    }
-}
-
 @media screen and (max-width: 480px) {
+    .shows-header {
+        font-size: 28px;
+    }
+
+    .date {
+        width: 50px;
+        padding-bottom: 30px;
+        margin-right: 15px;
+        margin-bottom: 8px;
+    }
+    .day-container {
+        padding-top: 20px;
+    }
+    .day {
+        font-size: 28px;
+    }
+
+    .show-text:not(.show-title) {
+        width: 100%;
+    }
+    .show-title,
+    .show-title a {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 28px;
+    }
+
+    .eventDescription {
+        font-size: 14px;
+    }
+
     .row-footer {
-        padding: 0 5px;
+        width: 100%;
+        padding-left: 0;
     }
     .venue a {
         font-size: 14px;
     }
+
+    .shows {
+        padding: 0;
+    }
+    .shows > h2 {
+        margin: 0;
+    }
+
+    .showItem, .showItem:hover {
+        margin: 1px 0 0; 
+        border: 0; 
+        border-radius: 0; 
+        box-shadow: none; 
+    }
+
 }
 
 
@@ -909,45 +1157,6 @@ header.showsPageOverlap .just-the-tip {
 .collapsed-description .eventDescription:hover + .description-more {
     text-decoration: underline;
     color: #cc4433;
-}
-
-/* ------------------------------- SIDEBAR ------------------------- */
-
-.sidebar section:first-child {
-    border-top: 0;
-    padding-left: 8%;
-    margin-left: -8%;
-}
-.sidebar section {
-    padding-top: 25px;
-    border-top: 1px solid black;
-}
-
-@media screen and (min-width: 901px) {
-    .sidebar section:first-child {
-        border-top: 2px solid black;
-    }
-}
-
-.bandcamp-player {
-    width: 100%;
-    height: 120px;
-}
-
-.youtube-player-container {
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    position: relative;
-}
-.youtube-player {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 

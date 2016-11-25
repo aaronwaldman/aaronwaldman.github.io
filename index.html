@@ -8,21 +8,30 @@
 <body>
     <header id="header" class="noBg">
         <div class="header-container">
-            <a href="#home">
+            <a href="#home" class="page-link">
                 <h1>Aaron Waldman</h1>
             </a>
+            <span id="header-links-toggle" class="header-link">
+                <i class="icon-menu"></i>
+            </span>
             <nav class="header-links">
-                <a href="#shows" class="header-link clickable shows-link">
+                <a href="#shows" class="header-link shows-link page-link">
                     <i class="icon-calendar"></i>Shows
                     <div class="header-link-underline"></div>
                 </a>
-                <a href="https://aaronwaldman.bandcamp.com/releases" class="header-link clickable">
+                <a href="https://aaronwaldman.bandcamp.com/releases" class="header-link">
                     <i class="icon-bandcamp"></i>Bandcamp
                 </a>
-                <a href="https://www.facebook.com/aaronwaldmanmusic" class="header-link clickable">
+                <a href="https://www.facebook.com/aaronwaldmanmusic" class="header-link">
                     <i class="icon-facebook"></i>Facebook
                 </a>
-                <span id="booking-trigger" class="header-link clickable">
+                <a href="tel:207.555.5555" class="header-link mobile-only">
+                    <i class="icon-phone"></i>207.555.5555
+                </a>
+                <a href="mailto:aaronwaldman@gmail.com" class="header-link mobile-only">
+                    <i class="icon-envelope"></i>aaronwaldman@gmail.com
+                </a>
+                <span id="booking-trigger" class="header-link clickable mobile-hide">
                     <i class="icon-phone"></i>Booking
 
                     <div id="booking-info">
@@ -56,7 +65,7 @@
     <main>
         <div id="home" class="page home-page">
             <div id="home-container" class="container">
-                <div class="content">
+                <div class="about content">
                     <h2>About</h2>
                     <p class="about-description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus leo at libero sodales, ac blandit ex ullamcorper. In hac habitasse platea dictumst. Donec faucibus id nibh eu sollicitudin.<br><br>
@@ -70,12 +79,13 @@
                         <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/2E3PN9G003I?list=PLjxgSASrgGKI3Vg-Ro2j2J1ap7sK6evc9" frameborder="0" allowfullscreen=""></iframe>
                     </div>
                 </section>
-                <section class="music-player">
+                <section class="content music-player">
                     <h2 class="music-header">Music</h2>
                     <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless="">
                         &amp;lt;a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep"&amp;gt;A Mediocre Folk EP by Aaron Waldman&amp;lt;/a&amp;gt;
                     </iframe>
                 </section>
+                <div class="clear"></div>
             </div>
             <div class="home-background"></div>
         </div>
@@ -103,11 +113,11 @@
                                         <div class="day">{{day}}</div>
                                     </div>
                                 </div>
-                                <div class="title-column">
-                                    <h3 class="show-title"><a href="{{eventLink}}">{{title}}</a></h3>
-                                    <p class="eventDescription">{{description}}</p>
-                                    <a class="description-more" href="javascript:void(0)">Show More</a>
-                                </div>
+                                <h3 class="show-title show-text">
+                                    <a href="{{eventLink}}">{{title}}</a>
+                                </h3>
+                                <p class="eventDescription show-text">{{description}}</p>
+                                <a class="description-more " href="javascript:void(0)">Show More</a>
                             </div>
                             <div class="row-footer">
                                 <span class="venue">

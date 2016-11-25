@@ -98,6 +98,10 @@ var Header = (function($, window) {
 
         height: null,
 
+        mobileNavToggle: null,
+
+        pageLinks: null,
+
         activeState: "",
 
         changeTriggers: [/* {klass: string, yThreshold: 0} */],
@@ -105,9 +109,13 @@ var Header = (function($, window) {
         init: function() {
             this.window = $(window);
             this.element = $("#header");
+            this.mobileNavToggle = $('#header-links-toggle');
+            this.pageLinks = this.element.find(".page-link");
             this.height = this.element.outerHeight();
 
             this.setTriggerPositions();
+
+            this.setMobileMenuEvents();
 
             this.window.scroll(this.handleScroll.bind(this));
             this.handleScroll();
@@ -147,8 +155,49 @@ var Header = (function($, window) {
                 this.active = active;
                 this.element.addClass(active.klass);
             }
-        }
+        },
 
+        setMobileMenuEvents: function() {
+            $(this.mobileNavToggle).click(this.handleMobileMenuClick.bind(this));
+            $(this.pageLinks).click(this.hideMobileMenu.bind(this));
+        },
+
+        handleMobileMenuClick: function(event) {
+            event.stopPropagation();
+
+            if (this.element.is(".show-mobile-nav")) {
+                this.hideMobileMenu(event);
+            }
+            else {
+                this.showMobileMenu(event);
+            }
+        },
+
+        showMobileMenu: function(event) {
+            var self = this;
+            this.element.addClass("show-mobile-nav");
+
+            $('body').one("click", function(newEvent) {
+                self.handleActiveMenuClick(newEvent);
+            });
+        },
+
+        hideMobileMenu: function(event) {
+            this.element.removeClass("show-mobile-nav");
+        },
+
+        handleActiveMenuClick: function(event) {
+            var self = this;
+            var isTargetHeader = $(event.target).closest("#header").length;
+            event.stopPropagation();
+            if (!isTargetHeader) {
+                self.handleMobileMenuClick(event);
+            } else {
+                $('body').one("click", function(newEvent) {
+                    self.handleActiveMenuClick(newEvent);
+                });
+            }
+        }
     };
 
 })($, window);
