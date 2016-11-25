@@ -268,7 +268,7 @@ var Booking = (function($) {
             });
         },
 
-        handleBookingLinkClick(event) {
+        handleBookingLinkClick: function(event) {
             var self = this;
             this.bookingLink.addClass("active");
             event.stopPropagation();
@@ -278,7 +278,7 @@ var Booking = (function($) {
             });
         },
 
-        handleClickWhileBookingActive(event) {
+        handleClickWhileBookingActive: function(event) {
             var self = this;
             var isTargetBookingForm = $(event.target).closest("#booking-info").length;
             event.stopPropagation();
