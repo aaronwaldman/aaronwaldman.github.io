@@ -463,7 +463,7 @@ header {
 #booking-info {
     display: none;
     position: absolute;
-    top: 55px;
+    top: 65px;
     right: -2px;
     width: 360px;
     padding: 0 20px;
@@ -512,7 +512,7 @@ header {
 .clipboard {
     width: 76px;
     float: right;
-    margin-top: 11px;
+    margin-top: 16px;
     vertical-align: middle;
 }
 
@@ -540,7 +540,7 @@ header {
 .just-the-tip {
     position: absolute;
     right: 22px;
-    bottom: 100%;
+    bottom: calc(100% + 10px);
     width: 38px;
     height: 24px;
     overflow: visible;
@@ -579,10 +579,6 @@ header {
         font-size: 16px;
     }
 
-    #booking-info {
-        top: 65px;
-    }
-
     #booking-info section {
         padding: 0;
         font-size: 16px;
@@ -590,10 +586,6 @@ header {
 
     .clipboard {
         margin-top: 17px;
-    }
-
-    .just-the-tip {
-        bottom: calc(100% + 10px);
     }
 }
 
@@ -634,6 +626,7 @@ header {
 
     .header-link-underline {
         width: 78%;
+        margin-left: -2px;
     }
 
     .just-the-tip {
@@ -814,7 +807,7 @@ header.showsPageOverlap .just-the-tip {
 
 @media screen and (max-width: 915px) {
     #home-container {
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .content {
@@ -1040,7 +1033,7 @@ header.showsPageOverlap .just-the-tip {
 
 .row-footer{
     margin: 0.5em 0 0;
-    padding-left: 72px;
+    padding-left: calc(8% + 22px);
     color: #fff;
 }
 
@@ -1058,6 +1051,12 @@ header.showsPageOverlap .just-the-tip {
     pointer-events: none;
     text-decoration: none;
     cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+    .row-footer{
+        padding-left: 82px;
+    }
 }
 
 @media screen and (max-width: 480px) {

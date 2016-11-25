@@ -61,6 +61,31 @@ var Time = (function(){
             return hour + ':' + minutes + amPmString;
         },
 
+        getTimezoneOffset: function(dateString, timezoneRegex) {
+            var timezoneOffset = dateString.match(timezoneRegex);
+            var timezoneRaw = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
+            return timezoneRaw / 100;
+        },
+
+        getDateFromTimestamp: function(dateString) {
+            var timezoneRegex = /-(GMT|)\d\d\d\d$/gi;
+
+            var formattedDateString = dateString.replace(timezoneRegex, "");
+            var date = new Date(formattedDateString);
+
+            var timezoneHours = this.getTimezoneOffset(dateString, timezoneRegex);
+            var adjustedHours = date.getHours() - timezoneHours;
+            return new Date(date.setHours(adjustedHours));
+        },
+
+        getMonthShort: function(date) {
+            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+              "July", "Aug", "Sept", "Oct", "Nov", "Dec"
+            ];
+            var monthNum = date.getMonth();
+            return monthNames[monthNum];
+        },
+
         getTimeRange: function(start, end) {
             start = start || "";
             end   = end   || "";
@@ -321,11 +346,11 @@ var Shows = (function($, Time) {
             }
 
             if (show.end_time) {
-                data.date = new Date(show.end_time);
+                data.date = Time.getDateFromTimestamp(show.end_time);
                 data.endTime = Time.getHumanTime(data.date);
             }
             if (show.start_time) {
-                data.date = new Date(show.start_time);
+                data.date = Time.getDateFromTimestamp(show.start_time);
                 data.startTime = Time.getHumanTime(data.date);
                 data.startDateString = data.date.toDateString();
             }
@@ -333,7 +358,7 @@ var Shows = (function($, Time) {
             data.timeRange = Time.getTimeRange(data.startTime, data.endTime);
 
             data.day = data.date.getDate();
-            data.month = data.date.toLocaleString("en-us", { month: "short" });
+            data.month = Time.getMonthShort(data.date);
 
             data.pastShowFlag = show.alreadyHappened && window.grey_past_shows ? 'pastShow' : '';
 
