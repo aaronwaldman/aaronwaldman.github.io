@@ -153,7 +153,7 @@ var Header = (function($, window) {
                 "yThreshold": $("#home-container").offset().top,
             }, {
                 "klass": "showsPageOverlap",
-                "yThreshold": $("#shows").offset().top
+                "yThreshold": $("#shows").offset().top - this.height
             }];
 
             this.changeTriggers.sort(function(a,b) {
@@ -162,7 +162,7 @@ var Header = (function($, window) {
         },
 
         handleScroll: function() {
-            var bottomPos = this.height + this.window.scrollTop();
+            var bottomPos = this.window.scrollTop();
             var active = null;
 
             this.changeTriggers.forEach(function(trigger) {
