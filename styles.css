@@ -763,6 +763,7 @@ header.showsPageOverlap .just-the-tip {
 .video-section {
     max-width: 436px;
     width: 50%;
+    min-height: 472px;
     padding: 30px;
     margin-bottom: 0;
     float: right;
