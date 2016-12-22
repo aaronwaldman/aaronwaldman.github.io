@@ -152,7 +152,6 @@ h1 {
     text-align: left;
     margin: 0;
     padding-bottom:2px;
-    padding-left: 12px;
     width: 294px;
     float: left;
 
@@ -256,8 +255,7 @@ footer {
 
 /* -------------------------------- PAGE LAYOUT -----------------------------*/
 
-header,
-footer {
+header {
     width: 100%;
     padding: 0 40px;
     box-sizing: border-box;
@@ -751,11 +749,33 @@ header.showsPageOverlap .just-the-tip {
     background: rgba(255, 255, 255, 0.25);
 }
 
+
+.link-section {
+    margin-top: 18px;
+    text-align: center;
+    font-family: walkway, helvetica, arial;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    font-size: 16px;
+}
+.link-section a {
+    color: #6C1406;
+} 
+
 /* --------- About ---------- */
 
 .about.content {
     background: rgba(255, 255, 255, 0.3);
 }
+
+.about-description {
+    font-size: 16px;
+    orphans: 3;
+}
+.about-description a {
+    color: #6C1406;
+}
+
 
 
 /* --------- Video ---------- */
@@ -763,7 +783,7 @@ header.showsPageOverlap .just-the-tip {
 .video-section {
     max-width: 436px;
     width: 50%;
-    min-height: 472px;
+    min-height: 491px;
     padding: 30px;
     margin-bottom: 0;
     float: right;
@@ -823,6 +843,7 @@ header.showsPageOverlap .just-the-tip {
 
     .video-section {
         height: auto;
+        min-height: 0;
     }
 }
 
@@ -869,13 +890,17 @@ header.showsPageOverlap .just-the-tip {
     }
 
     .youtube-player-container {
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
 }
 
 
 /* ---------- Shows --------- */
+
+.shows-page {
+    min-height: calc(100% - 167px);
+}
 
 .shows {
     width: 70%;
@@ -886,6 +911,7 @@ header.showsPageOverlap .just-the-tip {
 @media screen and (max-width: 915px) {
     .shows {
         width: 100%;
+        min-height: 0;
         box-sizing: border-box;
     }
 }
@@ -930,7 +956,7 @@ header.showsPageOverlap .just-the-tip {
 }
 
 .show-list {
-    max-height:500px;
+    max-height: 600px;
     overflow: auto;
     margin-top: 0;
 
@@ -1193,6 +1219,10 @@ header.showsPageOverlap .just-the-tip {
 
 
 /* ------------------------------- FOOTER ------------------------- */
+
+footer {
+    padding: 12px 40px;
+}
 
 footer li {
     display: inline-block;
