@@ -96,6 +96,7 @@ clay: #7F3C00;
 }
 .icon-phone:before {
   content: "\e942";
+  margin-top: -1px;
 }
 .icon-envelope:before {
   content: "\e945";
@@ -117,6 +118,13 @@ clay: #7F3C00;
 }
 .icon-menu:before {
   content: "\e9bd";
+}
+.icon-instagram {
+  font-size: 26px;
+  vertical-align: -3px;
+}
+.icon-instagram:before {
+  content: "\e901";
 }
 
 
@@ -152,12 +160,12 @@ h1 {
     text-align: left;
     margin: 0;
     padding-bottom:2px;
-    width: 294px;
+        width: 274px;
     float: left;
 
     border-bottom: 2px solid black;
     color: #333;
-    font-size: 40px;
+    font-size: 38px;
     line-height: 60px;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
     vertical-align: bottom;
@@ -366,13 +374,6 @@ header {
             transition: 0.5s ease background, 0.5s ease width, 0.5s ease border;
 }
 
-@media screen and (max-width: 900px) {
-    header {
-        padding: 0 20px;
-        height: 65px;
-        border-bottom: 2px solid #000;
-    }
-}
 
 .logo {
     display: inline-block;
@@ -402,11 +403,10 @@ header {
 .header-link {
     display: inline-block;
     margin-right: 20px;
-    margin-right: 4%;
     line-height: 65px;
 
     color: #333;
-    font-size: 24px;
+    font-size: 21px;
     font-weight: 500;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
     text-align: center;
@@ -417,7 +417,7 @@ header {
             transition: 0.5s ease color;
 }
 
-.header-link:last-child {
+.header-link:not(.mobile-only):last-of-type {
     margin-right: 0;
 }
 
@@ -432,7 +432,8 @@ header {
 
 .header-link i {
     font-size: 20px;
-    margin-right: 14px;
+    margin-right: 10px;
+    vertical-align: -1px;
 }
 
 .header-link-underline {
@@ -557,9 +558,9 @@ header {
     z-index: 101;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1092px) {
     h1 {
-        width: 242px;
+        width: 245px;
         padding-left: 0;
         font-size: 34px;
     }
@@ -569,11 +570,11 @@ header {
     }
 
     .header-link {
-        font-size: 20px;
+        font-size: 18px;
         margin-right: 20px;
     }
     .header-link i {
-        margin-right: 10px;
+        margin-right: 9px;
         font-size: 16px;
     }
 
@@ -587,24 +588,59 @@ header {
     }
 }
 
-@media screen and (max-width: 815px) {
+@media screen and (max-width: 945px) {
     h1 {
-        width: 214px;
-        font-size: 30px;
-    }
-
-    .header-link {
-        margin-right: 15px;
-        font-size: 16px;
+        width: 204px;
+        font-size: 28px;
     }
 
     .header-links {
-        width: calc(100% - 230px);
+        width: calc(100% - 222px);
+    }
+
+    .header-link {
+        margin-right: 3%;
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 868px) {
+    h1 {
+        width: 236px;
+        font-size: 32px;
+    }
+
+    .header-links {
+        width: calc(100% - 236px);
+    }
+
+    .header-link {
+        font-size: 0;
+    }
+
+    .header-link > i {
+        margin-right: 25px;
+        line-height: 65px;
+        font-size: 24px;
+        vertical-align: middle;
+    }
+    .header-link:not(.mobile-only):last-of-type > i {
+        margin-right: 0;
+    }
+
+    .just-the-tip {
+        right: 4px;
     }
 }
 
 
 @media screen and (max-width: 768px) {
+    header {
+        padding: 0 20px;
+        height: 65px;
+        border-bottom: 2px solid #000;
+    }
+
     #booking-info {
         font-size: 16px;
         width: 320px;
@@ -613,26 +649,33 @@ header {
 }
 
 @media screen and (max-width: 698px) {
+    header {
+        height: 65px;
+        padding: 0 20px;
+    }
+    h1 {
+        width: 214px;
+        font-size: 28px;
+        margin-top: 8px;
+        line-height: 52px;
+    }
+    .header-links {
+        width: calc(100% - 216px);
+    }
     .header-link {
-        font-size: 0;
+        margin-right: 6%;
     }
     .header-link > i {
-        line-height: 65px;
-        font-size: 24px;
-        vertical-align: middle;
-    }
-
-    .header-link-underline {
-        width: 78%;
-        margin-left: -2px;
-    }
-
-    .just-the-tip {
-        right: 4px;
+        font-size: 22px;
+        margin-right: 0;
     }
 }
 
 @media screen and (max-width: 480px) {
+    h1 {
+        margin-top: 0;
+        line-height: 60px;
+    }
     .header-link {
         display: none;
     }
@@ -643,7 +686,10 @@ header {
         display: inline-block;
     }
     #header.show-mobile-nav {
-        height: 408px;
+        height: auto;
+    }
+    #header.show-mobile-nav.homeContentOverlap {
+        background: rgba(255,255,255,.98);
     }
 
     #header-links-toggle,
@@ -659,11 +705,15 @@ header {
         text-align: left;
     }
     .show-mobile-nav .header-link {
-        font-size: 24px;
+        font-size: 20px;
         border-bottom: 2px solid #333;
     }
     .show-mobile-nav .header-link:last-child {
         border-bottom: none;
+    }
+    .show-mobile-nav .header-link > i {
+        margin-right: 14px;
+        vertical-align: -2px;
     }
 }
 

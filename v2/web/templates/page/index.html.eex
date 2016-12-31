@@ -1,0 +1,176 @@
+<header id="header" class="noBg">
+    <div class="header-container">
+        <a href="#home" class="page-link">
+            <h1>Aaron Waldman</h1>
+        </a>
+        <span id="header-links-toggle" class="header-link">
+            <i class="icon-menu"></i>
+        </span>
+        <nav class="header-links">
+            <a href="#shows" class="header-link shows-link page-link">
+                <i class="icon-calendar"></i>Shows
+                <div class="header-link-underline"></div>
+            </a>
+            <a href="https://aaronwaldman.bandcamp.com/releases" class="header-link" target="_blank">
+                <i class="icon-bandcamp"></i>Bandcamp
+            </a>
+            <a href="https://www.facebook.com/aaronwaldmanmusic" class="header-link" target="_blank">
+                <i class="icon-facebook"></i>Facebook
+            </a>
+            <a href="tel:2074752993" class="header-link mobile-only">
+                <i class="icon-phone"></i>207.475.2993
+            </a>
+            <a href="mailto:waldmanaaron@gmail.com" class="header-link mobile-only">
+                <i class="icon-envelope"></i>waldmanaaron@gmail.com
+            </a>
+            <span id="booking-trigger" class="header-link clickable mobile-hide">
+                <i class="icon-phone"></i>Booking
+
+                <div id="booking-info">
+                    <div class="just-the-tip"></div>
+                    <section class="phone-section">
+                        <i class="icon-phone"></i>
+                        <a href="tel:2074752993">
+                            <span class="telephone-text to-copy info-line"/>207.475.2993</span>
+                        </a>
+
+                        <button id="phone-clipboard" class="clipboard" data-clipboard-text="12074752993">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>
+
+                    <section class="email-section">
+                        <i class="icon-envelope"></i>
+                        <a href="mailto:waldmanaaron@gmail.com">
+                            <span class="email-text to-copy info-line"/>waldmanaaron@gmail.com</span>
+                        </a>
+                        <button id="email-clipboard" class="clipboard" data-clipboard-text="waldmanaaron@gmail.com">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>  
+
+                    <section class="web-contact-section">
+                        <i class="icon-envelope"></i>
+                        <a href="mailto:waldmanaaron@gmail.com">
+                            <span class="email-text to-copy info-line"/>
+                                <%= contact_path(@conn, :create) %>
+                            </span>
+                        </a>
+                        <button id="email-clipboard" class="clipboard" data-clipboard-text="waldmanaaron@gmail.com">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>  
+                </div>
+            </span>
+        </nav>
+        <div class="clear"></div>
+    </div>
+</header>
+<main>
+    <div id="home" class="page home-page">
+        <div id="home-container" class="container">
+            <div class="about content">
+                <h2>About</h2>
+                <p class="about-description">
+                    Aaron&nbsp;Waldman hails from York,&nbsp;Maine, where 60's &amp; 70's folk still reigns supreme. <br><br> The pathos of artists ranging from Jim&nbsp;Morrison to Manchester&nbsp;Orchestra to Kendrick&nbsp;Lamar inspired Aaron to craft a painfully earnest indie-folk sound reminiscent of James&nbsp;Taylor and Elliott&nbsp;Smith. 
+                    <br><br>
+                    Aaron is currently building a following in New&nbsp;York&nbsp;City: Like the <a href="https://www.facebook.com/aaronwaldmanmusic" target="_blank">facebook page</a> for updates on shows near&nbsp;you!
+
+                </p>
+            </div>
+            <section class="video-section">
+                <h2 class="video-header">Video</h2>
+                <div class="youtube-player-container">
+                    <iframe class="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/3wj1o95Jh_s" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="youtube-links link-section">
+                    <a href="https://www.youtube.com/channel/UCCr_YlzrQLM1rHEHy0ZltdA?sub_confirmation=1" target="_blank">
+                        Subscribe for new videos &gt;
+                    </a>
+                </div>
+            </section>
+            <section class="content music-player">
+                <h2 class="music-header">Music</h2>
+                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2923481904/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless="">
+                    &amp;lt;a href="http://aaronwaldman.bandcamp.com/album/a-mediocre-folk-ep"&amp;gt;A Mediocre Folk EP by Aaron Waldman&amp;lt;/a&amp;gt;
+                </iframe>
+                <div class="bandcamp-links link-section">
+                    <a href="https://aaronwaldman.bandcamp.com/releases" target="_blank">
+                        See all releases on Bandcamp &gt;
+                    </a>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="home-background"></div>
+    </div>
+
+    <div class="page-border">
+
+    </div>
+
+    <div id="shows" class="page shows-page">
+        <div class="container">
+            <section class="shows">
+                <h2 class="shows-header">Upcoming Shows</h2>
+
+                <ul id="shows-components" class="show-list no-scroll">
+
+                </ul>
+
+                <!-- Start show item template -->
+                <ul id="showTemplate" class="template">
+                    <li class="showItem {{pastShowFlag}}">
+                        <div class="row-headline">
+                            <div class="date">
+                                <div class="month">{{month}}</div>
+                                <div class="day-container">
+                                    <div class="day">{{day}}</div>
+                                </div>
+                            </div>
+                            <h3 class="show-title show-text">
+                                <a href="{{eventLink}}" target="_blank">{{title}}</a>
+                            </h3>
+                            <p class="eventDescription show-text">{{description}}</p>
+                            <a class="description-more " href="javascript:void(0)" target="_blank">Show More</a>
+                        </div>
+                        <div class="row-footer">
+                            <span class="venue">
+                                <span class="time">{{timeRange}}</span>
+                                <a href="{{placeLink}}" target="_blank">{{placeName}}</a>
+                                <a href="{{mapLink}}" class="{{mapLinkClass}}" target="_blank">Map</a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <!-- End show item template -->
+
+                <div id="#no-shows" class="hide">
+                    No upcoming shows found :(
+                </div>
+
+            </section>
+        </div>
+        <div class="shows-background"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="contact-links">
+            <ul class="contact-items">
+                <li class="contact" data-type="email">
+                    <a href="mailto:waldmanaaron@gmail.com">
+                        waldmanaaron@gmail.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script type="text/javascript" src="dist/main.js"></script>
