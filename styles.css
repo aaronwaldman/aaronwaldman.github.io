@@ -691,6 +691,9 @@ header {
     #header.show-mobile-nav.homeContentOverlap {
         background: rgba(255,255,255,.98);
     }
+    #header.show-mobile-nav.homeContentOverlap {
+        background: rgba(255,255,255,.98);
+    }
 
     #header-links-toggle,
     .show-mobile-nav #header-links-toggle {
@@ -1018,7 +1021,7 @@ header.showsPageOverlap .just-the-tip {
     box-shadow: none;
 }
 
-.showItem {
+.showItem, #no-shows {
     margin: 10px 0;
     padding: 20px;
 

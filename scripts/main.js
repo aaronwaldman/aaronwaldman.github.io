@@ -1,6 +1,6 @@
 // ------------ BASIC SETTINGS -----------------
 
-var show_upcoming_shows_only = false;
+var show_upcoming_shows_only = true;
 var grey_past_shows = false;
 var max_shows_to_display = 10;
 var collapse_long_show_descriptions = false;
@@ -432,7 +432,7 @@ var Shows = (function($, Time) {
             }
 
             if (!$("#shows-components").children() || !$("#shows-components").children().length) {
-                $("#no-shows").addClass("show");
+                $("#no-shows").removeClass("hide");
             }
         },
 
