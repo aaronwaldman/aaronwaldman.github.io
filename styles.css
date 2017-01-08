@@ -780,6 +780,7 @@ header.showsPageOverlap .just-the-tip {
 
 .home-page {
     padding-top: 60px;
+    min-height: calc(100% - 85px);
 }
 
 .home-background {
@@ -982,7 +983,7 @@ header.showsPageOverlap .just-the-tip {
 .shows-header {
     padding: 0 20px 5px;
     margin: 0 -10px 0 -20px;
-    color: #fff;
+    color: #eceFe2;
     font-size: 40px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -995,10 +996,10 @@ header.showsPageOverlap .just-the-tip {
 
 .shows-background {
     position: absolute;
-    top: -15%;
-    bottom: -15%;
-    left: -11%;
-    right: -11%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-image: url(images/shows_bg.jpg); */
     background-repeat: no-repeat;
     background-position: center;
@@ -1027,14 +1028,14 @@ header.showsPageOverlap .just-the-tip {
 
     border: 1px solid #ccc;
     border-radius: 3px;
-    box-shadow: 0 0 6px -2px rgba(0,0,0,0.3);
+    box-shadow: 0 0 6px -2px rgba(0,0,0,.33);
     font-size: 15px;
 
     transition: 0.25s box-shadow ease;
     -ms-transition: 0.25s box-shadow ease;
     -moz-transition: 0.25s box-shadow ease;
     -webkit-transition: 0.25s box-shadow ease;
-    background: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.5);
 }
 
 .showItem:hover {
@@ -1071,7 +1072,7 @@ header.showsPageOverlap .just-the-tip {
     position: relative;
     z-index: 1;
 
-    border: 1px solid #333;
+    border: 1px solid #eceFe2;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     box-shadow: 1px 1px 3px -1px rgba(0,0,0,0.25);
@@ -1092,7 +1093,7 @@ header.showsPageOverlap .just-the-tip {
     border: 1px solid #ac2413;
     border-top-left-radius: 1px;
     border-top-right-radius: 1px;
-    color: white;
+    color: #eceFe2;
     font-family: walkway, helvetica, arial;
     font-size: 16px;
     text-align: center;
@@ -1111,7 +1112,7 @@ header.showsPageOverlap .just-the-tip {
     font-family: walkway, helvetica, arial;
     font-size: 32px;
     font-weight: 800;
-    color: #333;
+    color: #eceFe2;
 }
 
 .show-text {
@@ -1121,7 +1122,7 @@ header.showsPageOverlap .just-the-tip {
 .show-title, .show-title a {
     margin: 0;
 
-    color: #222;
+    color: #eceFe2;
     font-size: 24px;
 }
 
@@ -1132,7 +1133,7 @@ header.showsPageOverlap .just-the-tip {
     line-height: 1.2
 
     font-size: 15px;
-    color: #000;
+    color: #eceFe2;
 }
 @media screen and (max-width: 480px) {
 }
@@ -1143,15 +1144,23 @@ header.showsPageOverlap .just-the-tip {
     margin-top: -0.5em;
 }
 
-.row-footer{
+.row-footer {
     margin: 0.5em 0 0;
     padding-left: calc(8% + 22px);
-    color: #fff;
+    color: #eceFe2;
+}
+.row-footer a,
+.row-footer .clickable {
+    color: #c43;
+}
+.row-footer a:hover,
+.row-footer .clickable:hover {
+    color: #e55;
 }
 
 .venue,
 .venue span {
-    color: #333;
+    color: #eceFe2;
 }
 
 .venue a:nth-child(n+2):before {
