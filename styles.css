@@ -1002,7 +1002,7 @@ header.showsPageOverlap .just-the-tip {
     right: 0;
     background-image: url(images/shows_bg.jpg); */
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 40%;
     background-size: cover;
     /*filter: blur(8px) brightness(2.7) contrast(0.3) saturate(5);*/
     z-index: -1;
