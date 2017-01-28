@@ -1042,6 +1042,10 @@ header.showsPageOverlap .just-the-tip {
     box-shadow: 0 0 8px -1px rgba(0,0,0,0.4);
 }
 
+#no-shows {
+    color: #eceFe2;
+}
+
 .linkContainer {
     position: relative;
     z-index: 0;
