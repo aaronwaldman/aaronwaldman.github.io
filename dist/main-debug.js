@@ -61,19 +61,21 @@ var Time = (function(){
             return hour + ':' + minutes + amPmString;
         },
 
-        getTimezoneOffset: function(dateString, timezoneRegex) {
-            var timezoneOffset = dateString.match(timezoneRegex);
-            var timezoneRaw = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
-            return timezoneRaw / 100;
+        getTimezoneOffset: function(dateString) {
+            var timezoneRegex   = /-(GMT|)\d\d\d\d$/gi;
+            var timezoneOffset  = dateString.match(timezoneRegex);
+            var timezoneRaw     = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
+            var timezoneMinutes = timezoneRaw * 0.6; // Timezones that include minutes will be broken
+
+            return timezoneMinutes / 100;
         },
 
         getDateFromTimestamp: function(dateString) {
             var timezoneRegex = /-(GMT|)\d\d\d\d$/gi;
-
             var formattedDateString = dateString.replace(timezoneRegex, "");
             var date = new Date(formattedDateString);
 
-            var timezoneHours = this.getTimezoneOffset(dateString, timezoneRegex);
+            var timezoneHours = this.getTimezoneOffset(dateString);
             var adjustedHours = date.getHours() - timezoneHours;
             return new Date(date.setHours(adjustedHours));
         },
@@ -107,7 +109,7 @@ var Template = (function(){
             return template.replace(search, function(str) {
                 var unwrapped = str.slice(2, -2);
 
-                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : unwrapped;
+                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : "";
             });
         }
     }

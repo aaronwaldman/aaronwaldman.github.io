@@ -62,15 +62,11 @@ var Time = (function(){
         },
 
         getTimezoneOffset: function(dateString) {
-            // var homeYMDT        = dateString.split(/-|T/);
-            // var homeOffset      = new Date(homeYMDT[0], homeYMDT[1], homeYMDT[2]).getTimezoneOffset();
-
             var timezoneRegex   = /-(GMT|)\d\d\d\d$/gi;
             var timezoneOffset  = dateString.match(timezoneRegex);
             var timezoneRaw     = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
             var timezoneMinutes = timezoneRaw * 0.6; // Timezones that include minutes will be broken
 
-            // var timezoneOffset  = Math.abs(homeOffset) - Math.abs(timezoneMinutes);
             return timezoneMinutes / 100;
         },
 
@@ -113,7 +109,7 @@ var Template = (function(){
             return template.replace(search, function(str) {
                 var unwrapped = str.slice(2, -2);
 
-                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : unwrapped;
+                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : "";
             });
         }
     }

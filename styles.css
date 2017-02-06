@@ -1023,6 +1023,8 @@ header.showsPageOverlap .just-the-tip {
 }
 
 .showItem, #no-shows {
+    box-sizing: border-box;
+    min-height: 119px;
     margin: 10px 0;
     padding: 20px;
 
