@@ -402,9 +402,11 @@ var Shows = (function($, Time) {
 
             for (var i = 0; i < limit; i++) {
                 // Check if show already happened
-                var comparableTime = shows[i].end_time ? new Date(shows[i].end_time) :
-                           shows[i].start_time ? new Date(shows[i].start_time) : 
-                           new Date();
+                var comparableTime = shows[i].end_time
+                    ? Time.getDateFromTimestamp(shows[i].end_time)
+                    : shows[i].start_time
+                        ? Time.getDateFromTimestamp(shows[i].start_time)
+                        : new Date();
 
                 shows[i].alreadyHappened = comparableTime < new Date(); 
 

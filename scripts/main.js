@@ -61,19 +61,25 @@ var Time = (function(){
             return hour + ':' + minutes + amPmString;
         },
 
-        getTimezoneOffset: function(dateString, timezoneRegex) {
-            var timezoneOffset = dateString.match(timezoneRegex);
-            var timezoneRaw = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
-            return timezoneRaw / 100;
+        getTimezoneOffset: function(dateString) {
+            // var homeYMDT        = dateString.split(/-|T/);
+            // var homeOffset      = new Date(homeYMDT[0], homeYMDT[1], homeYMDT[2]).getTimezoneOffset();
+
+            var timezoneRegex   = /-(GMT|)\d\d\d\d$/gi;
+            var timezoneOffset  = dateString.match(timezoneRegex);
+            var timezoneRaw     = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
+            var timezoneMinutes = timezoneRaw * 0.6; // Timezones that include minutes will be broken
+
+            // var timezoneOffset  = Math.abs(homeOffset) - Math.abs(timezoneMinutes);
+            return timezoneMinutes / 100;
         },
 
         getDateFromTimestamp: function(dateString) {
             var timezoneRegex = /-(GMT|)\d\d\d\d$/gi;
-
             var formattedDateString = dateString.replace(timezoneRegex, "");
             var date = new Date(formattedDateString);
 
-            var timezoneHours = this.getTimezoneOffset(dateString, timezoneRegex);
+            var timezoneHours = this.getTimezoneOffset(dateString);
             var adjustedHours = date.getHours() - timezoneHours;
             return new Date(date.setHours(adjustedHours));
         },
@@ -402,9 +408,11 @@ var Shows = (function($, Time) {
 
             for (var i = 0; i < limit; i++) {
                 // Check if show already happened
-                var comparableTime = shows[i].end_time ? new Date(shows[i].end_time) :
-                           shows[i].start_time ? new Date(shows[i].start_time) : 
-                           new Date();
+                var comparableTime = shows[i].end_time
+                    ? Time.getDateFromTimestamp(shows[i].end_time)
+                    : shows[i].start_time
+                        ? Time.getDateFromTimestamp(shows[i].start_time)
+                        : new Date();
 
                 shows[i].alreadyHappened = comparableTime < new Date(); 
 

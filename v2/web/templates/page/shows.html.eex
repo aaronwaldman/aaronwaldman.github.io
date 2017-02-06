@@ -1,0 +1,44 @@
+<div id="shows" class="page shows-page">
+    <div class="container">
+        <section class="shows">
+            <h2 class="shows-header">Upcoming Shows</h2>
+
+            <ul id="shows-components" class="show-list no-scroll">
+
+            </ul>
+
+            <!-- Start show item template -->
+            <ul id="showTemplate" class="template">
+                <li class="showItem {{pastShowFlag}}">
+                    <div class="row-headline">
+                        <div class="date">
+                            <div class="month">{{month}}</div>
+                            <div class="day-container">
+                                <div class="day">{{day}}</div>
+                            </div>
+                        </div>
+                        <h3 class="show-title show-text">
+                            <a href="{{eventLink}}" target="_blank">{{title}}</a>
+                        </h3>
+                        <p class="eventDescription show-text">{{description}}</p>
+                        <a class="description-more " href="javascript:void(0)" target="_blank">Show More</a>
+                    </div>
+                    <div class="row-footer">
+                        <span class="venue">
+                            <span class="time">{{timeRange}}</span>
+                            <a href="{{placeLink}}" target="_blank">{{placeName}}</a>
+                            <a href="{{mapLink}}" class="{{mapLinkClass}}" target="_blank">Map</a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <!-- End show item template -->
+
+            <div id="#no-shows" class="hide">
+                No upcoming shows found :(
+            </div>
+
+        </section>
+    </div>
+    <div class="shows-background"></div>
+</div>

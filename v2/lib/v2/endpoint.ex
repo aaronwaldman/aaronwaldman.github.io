@@ -2,7 +2,7 @@ defmodule V2.Endpoint do
   use Phoenix.Endpoint, otp_app: :v2
 
   socket "/socket", V2.UserSocket
-  socket "/admin-socket", HelloPhoenix.AdminSocket
+  socket "/admin-socket", V2.AdminSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

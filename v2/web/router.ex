@@ -29,6 +29,15 @@ defmodule V2.Router do
     resources "/contact", ContactController
   end
 
+  scope "/api", V2 do
+    pipe_through :api
+
+    scope "/social/hooks/facebook", V2 do
+      post "/shows", V2.FacebookWebhookController, :create
+    end
+  end
+
+
   # Other scopes may use custom stacks.
   # scope "/api", V2 do
   #   pipe_through :api

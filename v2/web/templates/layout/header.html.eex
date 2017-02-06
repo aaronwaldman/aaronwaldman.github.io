@@ -1,0 +1,68 @@
+<header id="header" class="noBg">
+    <div class="header-container">
+        <a href="#home" class="page-link">
+            <h1>Aaron Waldman</h1>
+        </a>
+        <span id="header-links-toggle" class="header-link">
+            <i class="icon-menu"></i>
+        </span>
+        <nav class="header-links">
+            <a href="#shows" class="header-link shows-link page-link">
+                <i class="icon-calendar"></i>Shows
+                <div class="header-link-underline"></div>
+            </a>
+            <a href="https://aaronwaldman.bandcamp.com/releases" class="header-link" target="_blank">
+                <i class="icon-bandcamp"></i>Bandcamp
+            </a>
+            <a href="https://www.facebook.com/aaronwaldmanmusic" class="header-link" target="_blank">
+                <i class="icon-facebook"></i>Facebook
+            </a>
+            <a href="tel:2074752993" class="header-link mobile-only">
+                <i class="icon-phone"></i>207.475.2993
+            </a>
+            <a href="mailto:waldmanaaron@gmail.com" class="header-link mobile-only">
+                <i class="icon-envelope"></i>waldmanaaron@gmail.com
+            </a>
+            <span id="booking-trigger" class="header-link clickable mobile-hide">
+                <i class="icon-phone"></i>Booking
+
+                <div id="booking-info">
+                    <div class="just-the-tip"></div>
+                    <section class="phone-section">
+                        <i class="icon-phone"></i>
+                        <a href="tel:2074752993">
+                            <span class="telephone-text to-copy info-line"/>207.475.2993</span>
+                        </a>
+
+                        <button id="phone-clipboard" class="clipboard" data-clipboard-text="12074752993">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>
+
+                    <section class="email-section">
+                        <i class="icon-envelope"></i>
+                        <a href="mailto:waldmanaaron@gmail.com">
+                            <span class="email-text to-copy info-line"/>waldmanaaron@gmail.com</span>
+                        </a>
+                        <button id="email-clipboard" class="clipboard" data-clipboard-text="waldmanaaron@gmail.com">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>  
+
+                    <section class="web-contact-section">
+                        <i class="icon-envelope"></i>
+                        <a href="mailto:waldmanaaron@gmail.com">
+                            <span class="email-text to-copy info-line"/>
+                                <%= contact_path(@conn, :create) %>
+                            </span>
+                        </a>
+                        <button id="email-clipboard" class="clipboard" data-clipboard-text="waldmanaaron@gmail.com">
+                            <i class="icon-paste"></i>
+                        </button>
+                    </section>  
+                </div>
+            </span>
+        </nav>
+        <div class="clear"></div>
+    </div>
+</header>
