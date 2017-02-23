@@ -1,5 +1,0 @@
-<%= render @view_module, "home.html", assigns %>
-
-<div class="page-border"></div>
-
-<%= render @view_module, "shows.html", assigns %>

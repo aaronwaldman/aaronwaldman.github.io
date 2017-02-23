@@ -1,3 +1,0 @@
-FATAL:  postmaster became multithreaded during startup
-HINT:  Set the LC_ALL environment variable to a valid locale.
-LOG:  database system is shut down
