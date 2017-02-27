@@ -4,6 +4,7 @@ var show_upcoming_shows_only = true;
 var grey_past_shows = false;
 var max_shows_to_display = 10;
 var collapse_long_show_descriptions = false;
+var use_dropbox_events_file = true;
 
 // ------------ BASIC SETTINGS -----------------
 
@@ -12,9 +13,13 @@ var collapse_long_show_descriptions = false;
 var Dependencies = (function() {
     return {
         Shows: function() {
+            var url = use_dropbox_events_file
+                ? 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json'
+                : 'events.json';
+
             return $.ajax({
                 method: 'GET',
-                url: 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json',
+                url: url,
                 dataType: 'json'
             });
         },
@@ -104,13 +109,21 @@ var Template = (function(){
     return {
         replaceTemplateStrings: function(element, data) {
             var template = typeof element === 'string' ? element : $(element).html();
+            if (data.description) {
+               data.description = this.addDescriptionTags(data.description); 
+            }
             var search = /\{\{.+?\}\}/g;
-
             return template.replace(search, function(str) {
                 var unwrapped = str.slice(2, -2);
-
-                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : "";
+                return data.hasOwnProperty(unwrapped) ? data[unwrapped] : '';
             });
+        },
+
+        // :(
+        addDescriptionTags: function(template) {
+            var urlRegex = /(https?\:\/\/|www\.)[^\s()\[\]]+[^\s()\[\]\.\,\!\?]/g;
+            var tagReplacement = '<a href="$&" target="_blank">$&</a>';
+            return template.replace(urlRegex, tagReplacement);
         }
     }
 })();

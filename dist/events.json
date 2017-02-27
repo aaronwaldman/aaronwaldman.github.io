@@ -1,0 +1,109 @@
+{
+   "data": [
+      {
+         "description": "I'll be making my SF debut at Hotel Utah at 9:00! Even So (https://evenso.bandcamp.com/releases) is opening at 8:00.  The headliner is still TBA. Tickets are available at the link below, or at the door.  \n\nhttps://www.ticketfly.com/purchase/event/1427946?_ga=1.93792533.926061728.1487084517",
+         "end_time": "2017-02-28T23:00:00-0800",
+         "name": "San Francisco Debut At Hotel Utah",
+         "place": {
+            "name": "Hotel Utah Saloon",
+            "location": {
+               "city": "San Francisco",
+               "country": "United States",
+               "latitude": 37.779583634673,
+               "longitude": -122.39832364717,
+               "state": "CA",
+               "street": "500 4th St",
+               "zip": "94107"
+            },
+            "id": "106004036708"
+         },
+         "start_time": "2017-02-28T20:00:00-0800",
+         "id": "378470359179382"
+      },
+      {
+         "description": "Free show!  It'll be my first in LA, and my last in LA for the foreseeable future: Hope to see you there!",
+         "end_time": "2017-02-26T21:00:00-0800",
+         "name": "Los Angeles Debut at Silverlake Lounge",
+         "place": {
+            "name": "Silverlake lounge",
+            "location": {
+               "city": "Los Angeles",
+               "country": "United States",
+               "latitude": 34.08300804885,
+               "longitude": -118.27360015025,
+               "state": "CA",
+               "street": "2906 W Sunset Blvd",
+               "zip": "90026"
+            },
+            "id": "284623121703"
+         },
+         "start_time": "2017-02-26T20:00:00-0800",
+         "id": "1230065777030449"
+      },
+      {
+         "description": "Join me for my NYC Debut!  The show is free, and runs during happy hour (four dollar pints, dude). Please invite any friends who might be interested!\nDemos and such are available here: www.aaronwaldman.com",
+         "end_time": "2017-01-23T20:00:00-0500",
+         "name": "NYC Debut at Pianos",
+         "place": {
+            "name": "PIANOS",
+            "location": {
+               "city": "New York",
+               "country": "United States",
+               "latitude": 40.72109964364,
+               "longitude": -73.987817925589,
+               "state": "NY",
+               "street": "158 Ludlow St",
+               "zip": "10002"
+            },
+            "id": "43108655697"
+         },
+         "start_time": "2017-01-23T19:00:00-0500",
+         "id": "1183144641800181"
+      },
+      {
+         "description": "Mark Kilianski and Aaron Waldman will be bringing original folk and bluegrass tunes to the Thirsty Pig this Monday night.  There's an extensive beer list, no cover, and no good reason not to come say hi!\n\nhttp://www.markkilianski.com/\nhttp://www.aaronwaldman.com/",
+         "end_time": "2015-11-09T21:00:00-0500",
+         "name": "Mark and Aaron \u0040 the Thirsty Pig",
+         "place": {
+            "name": "The Thirsty Pig",
+            "location": {
+               "city": "Portland",
+               "country": "United States",
+               "latitude": 43.657203,
+               "longitude": -70.253871,
+               "state": "ME",
+               "street": "37 Exchange St",
+               "zip": "04101"
+            },
+            "id": "165856080143165"
+         },
+         "start_time": "2015-11-09T19:00:00-0500",
+         "id": "1507458042885938"
+      },
+      {
+         "description": "Our last night in Vermont!  We're hoping to make some new friends from the Montpelier music scene.  Our tunes are available here: \nchrishellermusic.com\naaronwaldman.com",
+         "name": "Chris Heller and Aaron Waldman \u0040Bagitos",
+         "place": {
+            "name": "Bagitos Bagel & Burrito Cafe",
+            "location": {
+               "city": "Montpelier",
+               "country": "United States",
+               "latitude": 44.258935988608,
+               "longitude": -72.576499885038,
+               "state": "VT",
+               "street": "28 Main St",
+               "zip": "05602"
+            },
+            "id": "113177065429577"
+         },
+         "start_time": "2015-10-22T18:00:00-0400",
+         "id": "1645132172400583"
+      }
+   ],
+   "paging": {
+      "cursors": {
+         "before": "Mzc4NDcwMzU5MTc5Mzgy",
+         "after": "MTY0NTEzMjE3MjQwMDU4MwZDZD"
+      }
+   }
+}

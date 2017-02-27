@@ -1141,7 +1141,9 @@ header.showsPageOverlap .just-the-tip {
     font-size: 15px;
     color: #eceFe2;
 }
-@media screen and (max-width: 480px) {
+.eventDescription a {
+    color: #eceFe2;
+    text-decoration: underline;
 }
 
 
