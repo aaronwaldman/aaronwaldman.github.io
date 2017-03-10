@@ -66,22 +66,12 @@ var Time = (function(){
             return hour + ':' + minutes + amPmString;
         },
 
-        getTimezoneOffset: function(dateString) {
-            var timezoneRegex   = /-(GMT|)\d\d\d\d$/gi;
-            var timezoneOffset  = dateString.match(timezoneRegex);
-            var timezoneRaw     = parseInt(timezoneOffset && timezoneOffset[0].replace(/w/i, ""), 10);
-            var timezoneMinutes = timezoneRaw * 0.6; // Timezones that include minutes will be broken
-
-            return timezoneMinutes / 100;
-        },
-
         getDateFromTimestamp: function(dateString) {
             var timezoneRegex = /-(GMT|)\d\d\d\d$/gi;
             var formattedDateString = dateString.replace(timezoneRegex, "");
             var date = new Date(formattedDateString);
 
-            var timezoneHours = this.getTimezoneOffset(dateString);
-            var adjustedHours = date.getHours() - timezoneHours;
+            var adjustedHours = date.getHours() + (date.getTimezoneOffset() / 60)
             return new Date(date.setHours(adjustedHours));
         },
 

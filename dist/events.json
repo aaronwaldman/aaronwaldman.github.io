@@ -1,6 +1,45 @@
 {
    "data": [
       {
+         "description": "Take the live music performances of Austin City Limits and combine them with the sketch comedy of Portlandia, drop the show in NYC and give the reins to a handful of crafty young multimedia types and you get Music That Doesn't Suck Monthly!\n\n-- MTDSM Presents: Small Town Survivors --\n\nAvery Mandeville and the Man Devils\nAaron Waldman\n\nSketches by Leslie Goshko\n\nMusic News by Katie Barner\n\nAdditional Characters by Ayala Skopp\n\nHosted by Alex Fulton\n\nhttps://youtu.be/Xd3WVzsgHLo",
+         "end_time": "2017-03-17T00:00:00-0400",
+         "name": "MTDSM Presents: Small Town Survivors",
+         "place": {
+            "name": "(le) poisson rouge",
+            "location": {
+               "city": "New York",
+               "country": "United States",
+               "latitude": 40.728546244,
+               "longitude": -73.999942133333,
+               "state": "NY",
+               "street": "158 Bleecker St",
+               "zip": "10012"
+            },
+            "id": "13852349119"
+         },
+         "start_time": "2017-03-16T19:00:00-0400",
+         "id": "390236811369106"
+      },
+      {
+         "description": "Aaron Waldman, Even So, Eric Winders (closing set) at Hotel Utah",
+         "name": "Aaron Waldman / Even So / Eric Winders (closing set) // at Hotel Utah",
+         "place": {
+            "name": "Hotel Utah Saloon",
+            "location": {
+               "city": "San Francisco",
+               "country": "United States",
+               "latitude": 37.779583634673,
+               "longitude": -122.39832364717,
+               "state": "CA",
+               "street": "500 4th St",
+               "zip": "94107"
+            },
+            "id": "106004036708"
+         },
+         "start_time": "2017-02-28T20:00:00-0800",
+         "id": "1636847466610158"
+      },
+      {
          "description": "I'll be making my SF debut at Hotel Utah at 9:00! Even So (https://evenso.bandcamp.com/releases) is opening at 8:00.  The headliner is still TBA. Tickets are available at the link below, or at the door.  \n\nhttps://www.ticketfly.com/purchase/event/1427946?_ga=1.93792533.926061728.1487084517",
          "end_time": "2017-02-28T23:00:00-0800",
          "name": "San Francisco Debut At Hotel Utah",
@@ -102,7 +141,7 @@
    ],
    "paging": {
       "cursors": {
-         "before": "Mzc4NDcwMzU5MTc5Mzgy",
+         "before": "MzkwMjM2ODExMzY5MTA2",
          "after": "MTY0NTEzMjE3MjQwMDU4MwZDZD"
       }
    }
