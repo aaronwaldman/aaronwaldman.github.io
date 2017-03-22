@@ -4,7 +4,7 @@ var show_upcoming_shows_only = true;
 var grey_past_shows = false;
 var max_shows_to_display = 10;
 var collapse_long_show_descriptions = false;
-var use_dropbox_events_file = true;
+var use_dropbox_events_file = false;
 
 // ------------ BASIC SETTINGS -----------------
 
@@ -15,7 +15,7 @@ var Dependencies = (function() {
         Shows: function() {
             var url = use_dropbox_events_file
                 ? 'https://dl.dropboxusercontent.com/u/102907239/aaron_waldman/events.json'
-                : 'events.json';
+                : 'dist/events.json';
 
             return $.ajax({
                 method: 'GET',
